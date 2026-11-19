@@ -1,0 +1,6 @@
+{
+  "name": "Sky Canvas",
+  "description": "Responsive full-bleed sky and clouds background canvas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
