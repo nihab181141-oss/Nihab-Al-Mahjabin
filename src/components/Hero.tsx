@@ -48,11 +48,11 @@ export function Hero({ onOpenContact }: HeroProps) {
       {/* Founder Introduction */}
       <div className="mx-auto max-w-3xl text-center">
         <div className="flex flex-col items-center">
-          <p className="font-[family-name:var(--font-heading)] text-[16px] font-semibold tracking-wide text-[#111318]/85 sm:text-[19px]">
+          <p className="font-[family-name:var(--font-heading)] text-[26px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#0b1117] drop-shadow-[0_1px_14px_rgba(255,255,255,0.38)] sm:text-[34px] lg:text-[40px]">
             {BRAND.name}
           </p>
 
-          <div className="mt-2 flex min-h-[46px] items-center justify-center overflow-hidden px-2 sm:min-h-[64px] lg:min-h-[76px]">
+          <div className="mt-2.5 flex min-h-[46px] items-center justify-center overflow-hidden px-2 sm:min-h-[64px] lg:min-h-[76px]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={activeRole}
@@ -68,7 +68,7 @@ export function Hero({ onOpenContact }: HeroProps) {
           </div>
         </div>
 
-        <h1 className="mt-5 font-[family-name:var(--font-heading)] text-[28px] leading-[1.16] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[36px] lg:text-[42px] [text-wrap:balance]">
+        <h1 className="mt-5 font-[family-name:var(--font-heading)] text-[26px] leading-[1.18] font-bold tracking-[-0.02em] text-[#111318]/90 sm:text-[34px] lg:text-[38px] [text-wrap:balance]">
           {BRAND.headline}
         </h1>
 
@@ -106,7 +106,7 @@ export function Hero({ onOpenContact }: HeroProps) {
         </div>
       </div>
 
-      {/* Dedicated Companies & Ventures Static Centered Multi-Row Showcase */}
+      {/* Dedicated Companies & Ventures Static Responsive Grid Showcase */}
       <div id="ventures" className="mt-20 sm:mt-24 lg:mt-28">
         <div className="text-center">
           <h2 className="font-[family-name:var(--font-heading)] text-[14px] font-semibold tracking-wide text-[#111318]/80">
@@ -115,12 +115,12 @@ export function Hero({ onOpenContact }: HeroProps) {
         </div>
 
         <div className="mt-6 sm:mt-8">
-          {/* Upper Tier: Larger Flagship Wordmarks */}
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-7 sm:gap-y-4 lg:gap-x-9">
+          {/* Upper Tier: 2-col mobile -> 4-col desktop grid for Flagship Wordmarks */}
+          <div className="grid grid-cols-2 items-center justify-items-center gap-x-5 gap-y-4 sm:gap-x-7 sm:gap-y-5 md:grid-cols-4 lg:gap-x-9">
             {FEATURED_WORDMARKS.map((logo) => (
               <div
                 key={`featured-${logo.id}`}
-                className="flex shrink-0 items-center justify-center"
+                className="flex min-h-[84px] w-full items-center justify-center sm:min-h-[104px] lg:min-h-[116px]"
               >
                 <img
                   src={logo.src}
@@ -138,13 +138,15 @@ export function Hero({ onOpenContact }: HeroProps) {
             className="mx-auto my-5 h-px w-full max-w-4xl bg-[#111318]/12 sm:my-6 lg:my-7"
           />
 
-          {/* Lower Tier: Balanced Multi-Row Alternating Icons & Wordmarks */}
+          {/* Lower Tier: Responsive Balanced Multi-Row Static Grids */}
           <div className="space-y-4 sm:space-y-5 lg:space-y-6">
-            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-7 sm:gap-y-4 lg:gap-x-9">
-              {VENTURE_GRID_ROW_ONE.map((logo) => (
+            <div className="grid grid-cols-2 items-center justify-items-center gap-x-5 gap-y-4 sm:grid-cols-3 sm:gap-x-7 lg:grid-cols-5 lg:gap-x-8">
+              {VENTURE_GRID_ROW_ONE.map((logo, index) => (
                 <div
                   key={`row1-${logo.id}`}
-                  className="flex shrink-0 items-center justify-center"
+                  className={`flex min-h-[84px] w-full items-center justify-center sm:min-h-[96px] lg:min-h-[112px] ${
+                    index === 4 ? 'col-span-2 sm:col-span-1' : ''
+                  }`}
                 >
                   <img
                     src={logo.src}
@@ -157,11 +159,11 @@ export function Hero({ onOpenContact }: HeroProps) {
               ))}
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-7 sm:gap-y-4 lg:gap-x-9">
+            <div className="mx-auto grid max-w-4xl grid-cols-2 items-center justify-items-center gap-x-5 gap-y-4 sm:gap-x-7 lg:grid-cols-4 lg:gap-x-8">
               {VENTURE_GRID_ROW_TWO.map((logo) => (
                 <div
                   key={`row2-${logo.id}`}
-                  className="flex shrink-0 items-center justify-center"
+                  className="flex min-h-[84px] w-full items-center justify-center sm:min-h-[96px] lg:min-h-[112px]"
                 >
                   <img
                     src={logo.src}

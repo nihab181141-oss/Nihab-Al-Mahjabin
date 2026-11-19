@@ -20,9 +20,18 @@ export function Header({ onOpenContact }: HeaderProps) {
         <div className="flex h-12 items-center justify-between gap-6">
           <a
             href="#top"
-            className="whitespace-nowrap shrink-0 font-[family-name:var(--font-heading)] text-[15px] font-bold tracking-tight text-[#111318] transition-opacity hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
+            className="flex items-center gap-3 whitespace-nowrap shrink-0 transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
           >
-            {BRAND.name}
+            <img
+              src="/assets/aistudio/nihab-al-mahjabin-icon-color_ca419e31.svg"
+              alt="Nihab Al Mahjabin Emblem"
+              className="h-11 w-11 sm:h-12 sm:w-12 object-contain"
+            />
+            <img
+              src="/assets/aistudio/nihab-al-mahjabin-single-line_6d36e2ba.svg"
+              alt={BRAND.name}
+              className="h-6 sm:h-7 lg:h-8 w-auto object-contain"
+            />
           </a>
 
           <nav
