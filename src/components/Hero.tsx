@@ -108,10 +108,13 @@ export function Hero({ onOpenContact }: HeroProps) {
 
       {/* Dedicated Companies & Ventures Static Responsive Grid Showcase */}
       <div id="ventures" className="mt-20 sm:mt-24 lg:mt-28">
-        <div className="text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-[14px] font-semibold tracking-wide text-[#111318]/80">
-            Companies &amp; Ventures
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-[family-name:var(--font-heading)] text-[22px] font-bold tracking-tight text-[#111318] sm:text-[26px]">
+            My Independent Ventures Those I&apos;ve Brought to Life
           </h2>
+          <p className="mt-2 text-[14px] text-[#687580] sm:text-[15px]">
+            A growing collection of brands, businesses and digital products I&apos;ve envisioned and built.
+          </p>
         </div>
 
         <div className="mt-6 sm:mt-8">

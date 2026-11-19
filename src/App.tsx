@@ -6,6 +6,7 @@
 import { MotionConfig } from 'motion/react';
 import { useState } from 'react';
 import { ContactModal } from './components/ContactModal';
+import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 
@@ -36,13 +37,15 @@ export default function App() {
           className="pointer-events-none fixed top-0 right-0 z-10 h-[70vmin] w-[70vmin] min-h-[300px] min-w-[300px] max-h-[720px] max-w-[720px] origin-top-right bg-sun-glare mix-blend-screen animate-sun-glare will-change-transform"
         />
 
-        {/* Header & Hero Only */}
+        {/* Header, Hero, and Detailed Footer */}
         <div className="relative z-20 flex min-h-dvh flex-col">
           <Header onOpenContact={handleOpenContact} />
 
           <main className="flex-1">
             <Hero onOpenContact={handleOpenContact} />
           </main>
+
+          <Footer onOpenContact={handleOpenContact} />
         </div>
 
         <ContactModal
