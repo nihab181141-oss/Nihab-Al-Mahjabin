@@ -89,49 +89,12 @@ export function Footer({ onOpenContact }: FooterProps) {
             </div>
 
             <div>
-              <p className="text-[12px] font-semibold tracking-wide text-[#111318] uppercase">
-                Active Ventures &amp; Companies
+              <p className="text-[13px] font-medium text-[#2587B8]">
+                Based in Bangladesh · Working Globally
               </p>
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2 rounded-xl border border-[#E5EBEF] bg-[#EDF4F7]/40 px-3 py-2">
-                  <img
-                    src={VENTURE_LOGOS.floraxenLabsWordmark.src}
-                    alt="Floraxen Labs"
-                    className="h-5 w-auto object-contain"
-                  />
-                </div>
-                <div className="flex items-center gap-2 rounded-xl border border-[#E5EBEF] bg-[#EDF4F7]/40 px-3 py-2">
-                  <span className="font-[family-name:var(--font-heading)] text-[13px] font-semibold text-[#111318]">
-                    Lumora Studio
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 rounded-xl border border-[#E5EBEF] bg-[#EDF4F7]/40 px-3 py-2">
-                  <img
-                    src={VENTURE_LOGOS.medprofileWordmark.src}
-                    alt="MedProfile Bangladesh"
-                    className="h-5 w-auto object-contain"
-                  />
-                </div>
-                <div className="flex items-center gap-2 rounded-xl border border-[#E5EBEF] bg-[#EDF4F7]/40 px-3 py-2">
-                  <img
-                    src={VENTURE_LOGOS.felowWordmark.src}
-                    alt="FeLow WebStaR"
-                    className="h-5 w-auto object-contain"
-                  />
-                </div>
-                <div className="flex items-center gap-2 rounded-xl border border-[#E5EBEF] bg-[#EDF4F7]/40 px-3 py-2">
-                  <span className="font-[family-name:var(--font-heading)] text-[13px] font-semibold text-[#111318]">
-                    Al Jabin Pub.
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 rounded-xl border border-[#E5EBEF] bg-[#EDF4F7]/40 px-3 py-2">
-                  <img
-                    src={VENTURE_LOGOS.sableWordmark.src}
-                    alt="Sable"
-                    className="h-5 w-auto object-contain"
-                  />
-                </div>
-              </div>
+              <p className="mt-3.5 text-[14px] leading-[1.75] text-[#687580] max-w-md">
+                An independent entrepreneur, product builder, and software engineer dedicated to turning ambitious imagination into enduring digital ventures. Focused on clean architecture, exceptional user craft, and building software that creates lasting positive impact across borders.
+              </p>
             </div>
           </div>
 
