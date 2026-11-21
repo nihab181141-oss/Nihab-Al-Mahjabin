@@ -7,8 +7,13 @@ interface HeaderProps {
 }
 
 const NAV_LINKS = [
-  { label: 'Introduction', href: '#top' },
+  { label: 'Philosophy', href: '#manifesto' },
+  { label: 'Expertise', href: '#skills' },
   { label: 'Ventures', href: '#ventures' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Insights', href: '#insights' },
+  { label: 'Contact', href: '#contact-section' },
 ];
 
 export function Header({ onOpenContact }: HeaderProps) {
@@ -37,7 +42,7 @@ export function Header({ onOpenContact }: HeaderProps) {
 
             <nav
               aria-label="Primary navigation"
-              className="hidden md:flex items-center gap-8 text-[13px] font-medium text-[#111318]/80"
+              className="hidden lg:flex items-center gap-6 text-[13px] font-medium text-[#111318]/80"
             >
               {NAV_LINKS.map((link) => (
                 <a
@@ -48,12 +53,6 @@ export function Header({ onOpenContact }: HeaderProps) {
                   {link.label}
                 </a>
               ))}
-              <a
-                href={`mailto:${BRAND.email}`}
-                className="whitespace-nowrap shrink-0 py-1 transition-colors duration-150 hover:text-[#111318] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
-              >
-                Email
-              </a>
             </nav>
 
             <div className="flex items-center gap-2 shrink-0">
@@ -70,7 +69,7 @@ export function Header({ onOpenContact }: HeaderProps) {
                 onClick={() => setMobileOpen(true)}
                 aria-expanded={mobileOpen}
                 aria-label="Open navigation menu"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#111318] transition-colors hover:bg-black/5 md:hidden cursor-pointer"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[#111318] transition-colors hover:bg-black/5 lg:hidden cursor-pointer"
               >
                 <Menu className="h-5 w-5" />
               </button>
@@ -83,14 +82,14 @@ export function Header({ onOpenContact }: HeaderProps) {
       {mobileOpen && (
         <div
           aria-hidden="true"
-          className="fixed inset-0 z-50 bg-[#111318]/40 backdrop-blur-xs transition-opacity md:hidden"
+          className="fixed inset-0 z-50 bg-[#111318]/40 backdrop-blur-xs transition-opacity lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
       {/* Slide-in Drawer from Right */}
       <div
-        className={`fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-white p-6 shadow-2xl transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-white p-6 shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -108,24 +107,17 @@ export function Header({ onOpenContact }: HeaderProps) {
           </button>
         </div>
 
-        <nav aria-label="Mobile navigation" className="mt-6 flex flex-col gap-2">
+        <nav aria-label="Mobile navigation" className="mt-6 flex flex-col gap-2 max-h-[calc(100vh-140px)] overflow-y-auto">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="flex min-h-[48px] items-center rounded-xl px-4 text-[15px] font-medium text-[#111318] transition-colors hover:bg-[#EDF4F7]"
+              className="flex min-h-[44px] items-center rounded-xl px-4 text-[15px] font-medium text-[#111318] transition-colors hover:bg-[#EDF4F7]"
             >
               {link.label}
             </a>
           ))}
-          <a
-            href={`mailto:${BRAND.email}`}
-            onClick={() => setMobileOpen(false)}
-            className="flex min-h-[48px] items-center rounded-xl px-4 text-[15px] font-medium text-[#111318] transition-colors hover:bg-[#EDF4F7]"
-          >
-            Email
-          </a>
           <div className="mt-6 border-t border-[#E5EBEF] pt-6">
             <button
               type="button"

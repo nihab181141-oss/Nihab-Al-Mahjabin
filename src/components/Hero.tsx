@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Copy } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 import {
@@ -15,7 +15,6 @@ interface HeroProps {
 
 export function Hero({ onOpenContact }: HeroProps) {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -28,16 +27,6 @@ export function Hero({ onOpenContact }: HeroProps) {
     return () => window.clearInterval(timer);
   }, []);
 
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(BRAND.email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2200);
-    } catch {
-      onOpenContact('General Hello');
-    }
-  };
-
   const activeRole = ROTATING_ROLES[roleIndex];
 
   return (
@@ -48,11 +37,11 @@ export function Hero({ onOpenContact }: HeroProps) {
       {/* Founder Introduction */}
       <div className="mx-auto max-w-3xl text-center">
         <div className="flex flex-col items-center">
-          <p className="font-[family-name:var(--font-heading)] text-[26px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#0b1117] drop-shadow-[0_1px_14px_rgba(255,255,255,0.38)] sm:text-[34px] lg:text-[40px]">
+          <p className="font-[family-name:var(--font-heading)] text-[16px] font-semibold tracking-wide text-[#111318]/85 sm:text-[19px]">
             {BRAND.name}
           </p>
 
-          <div className="mt-2.5 flex min-h-[46px] items-center justify-center overflow-hidden px-2 sm:min-h-[64px] lg:min-h-[76px]">
+          <div className="mt-2 flex min-h-[46px] items-center justify-center overflow-hidden px-2 sm:min-h-[64px] lg:min-h-[76px]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={activeRole}
@@ -68,7 +57,7 @@ export function Hero({ onOpenContact }: HeroProps) {
           </div>
         </div>
 
-        <h1 className="mt-5 font-[family-name:var(--font-heading)] text-[26px] leading-[1.18] font-bold tracking-[-0.02em] text-[#111318]/90 sm:text-[34px] lg:text-[38px] [text-wrap:balance]">
+        <h1 className="mt-5 font-[family-name:var(--font-heading)] text-[28px] leading-[1.16] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[36px] lg:text-[42px] [text-wrap:balance]">
           {BRAND.headline}
         </h1>
 
@@ -82,26 +71,8 @@ export function Hero({ onOpenContact }: HeroProps) {
             onClick={() => onOpenContact('Product Collaboration')}
             className="inline-flex h-[46px] items-center justify-center gap-2 rounded-full bg-[#111318] px-7 text-[14px] font-medium text-white whitespace-nowrap shrink-0 shadow-[0_10px_24px_-10px_rgba(17,19,24,0.45)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#1f242d] hover:shadow-[0_14px_28px_-10px_rgba(17,19,24,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111318] cursor-pointer"
           >
-            <span>Start a Conversation</span>
+            <span>Start Now</span>
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </button>
-
-          <button
-            type="button"
-            onClick={handleCopyEmail}
-            className="inline-flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#E5EBEF] bg-white px-6 text-[14px] font-medium text-[#111318] whitespace-nowrap shrink-0 shadow-[0_6px_18px_-8px_rgba(17,19,24,0.12)] transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-8px_rgba(17,19,24,0.16)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39A9D5] cursor-pointer"
-          >
-            {copied ? (
-              <>
-                <Check className="h-4 w-4 text-[#35B99A]" aria-hidden="true" />
-                <span>Email Copied</span>
-              </>
-            ) : (
-              <>
-                <Copy className="h-3.5 w-3.5 text-[#687580]" aria-hidden="true" />
-                <span>{BRAND.email}</span>
-              </>
-            )}
           </button>
         </div>
       </div>
@@ -141,15 +112,13 @@ export function Hero({ onOpenContact }: HeroProps) {
             className="mx-auto my-5 h-px w-full max-w-4xl bg-[#111318]/12 sm:my-6 lg:my-7"
           />
 
-          {/* Lower Tier: Responsive Balanced Multi-Row Static Grids */}
+          {/* Lower Tier: Balanced Multi-Row Alternating Icons & Wordmarks */}
           <div className="space-y-4 sm:space-y-5 lg:space-y-6">
-            <div className="grid grid-cols-2 items-center justify-items-center gap-x-5 gap-y-4 sm:grid-cols-3 sm:gap-x-7 lg:grid-cols-5 lg:gap-x-8">
-              {VENTURE_GRID_ROW_ONE.map((logo, index) => (
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-7 sm:gap-y-4 lg:gap-x-9">
+              {VENTURE_GRID_ROW_ONE.map((logo) => (
                 <div
                   key={`row1-${logo.id}`}
-                  className={`flex min-h-[84px] w-full items-center justify-center sm:min-h-[96px] lg:min-h-[112px] ${
-                    index === 4 ? 'col-span-2 sm:col-span-1' : ''
-                  }`}
+                  className="flex shrink-0 items-center justify-center"
                 >
                   <img
                     src={logo.src}
@@ -162,11 +131,11 @@ export function Hero({ onOpenContact }: HeroProps) {
               ))}
             </div>
 
-            <div className="mx-auto grid max-w-4xl grid-cols-2 items-center justify-items-center gap-x-5 gap-y-4 sm:gap-x-7 lg:grid-cols-4 lg:gap-x-8">
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-7 sm:gap-y-4 lg:gap-x-9">
               {VENTURE_GRID_ROW_TWO.map((logo) => (
                 <div
                   key={`row2-${logo.id}`}
-                  className="flex min-h-[84px] w-full items-center justify-center sm:min-h-[96px] lg:min-h-[112px]"
+                  className="flex shrink-0 items-center justify-center"
                 >
                   <img
                     src={logo.src}

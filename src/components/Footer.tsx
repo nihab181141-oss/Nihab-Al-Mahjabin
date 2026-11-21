@@ -1,23 +1,14 @@
-import { ArrowUp, ArrowUpRight, Check, Copy, Github, Linkedin, Mail, Twitter, Facebook } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Github, Linkedin, Twitter, Facebook, Instagram, Send, MessageCircle } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useState } from 'react';
-import { BRAND, VENTURE_LOGOS } from '../data/portfolio';
+import { BRAND } from '../data/portfolio';
 
 interface FooterProps {
   onOpenContact: (topic?: string) => void;
 }
 
 export function Footer({ onOpenContact }: FooterProps) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(BRAND.email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2200);
-    } catch {
-      onOpenContact('General Hello');
-    }
-  };
+  const [, setCopied] = useState(false);
 
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -29,7 +20,7 @@ export function Footer({ onOpenContact }: FooterProps) {
       <div className="mx-auto max-w-[1200px] px-5 pt-20 pb-16 sm:px-7 sm:pt-24 sm:pb-20 lg:px-10">
         <div className="rounded-[28px] border border-[#E5EBEF] bg-[#EDF4F7]/60 p-8 sm:p-12 lg:p-16">
           <div className="max-w-3xl">
-            <p className="text-[13px] font-semibold tracking-wide text-[#2587B8]">
+            <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
               Let’s Connect
             </p>
             <h2 className="mt-3 font-[family-name:var(--font-heading)] text-[34px] leading-[1.12] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[44px] lg:text-[52px] [text-wrap:balance]">
@@ -47,24 +38,6 @@ export function Footer({ onOpenContact }: FooterProps) {
               >
                 <span>Get in Touch</span>
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </button>
-
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="inline-flex h-[48px] items-center justify-center gap-2 rounded-full border border-[#E5EBEF] bg-white px-7 text-[14px] font-medium text-[#111318] whitespace-nowrap shrink-0 shadow-[0_6px_18px_-8px_rgba(17,19,24,0.1)] transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-8px_rgba(17,19,24,0.15)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39A9D5] cursor-pointer"
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-4 w-4 text-[#35B99A]" aria-hidden="true" />
-                    <span>Email Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Mail className="h-4 w-4 text-[#687580]" aria-hidden="true" />
-                    <span>{BRAND.email}</span>
-                  </>
-                )}
               </button>
             </div>
           </div>
@@ -85,7 +58,6 @@ export function Footer({ onOpenContact }: FooterProps) {
                   {BRAND.name}
                 </span>
               </div>
-
             </div>
 
             <div>
@@ -93,7 +65,7 @@ export function Footer({ onOpenContact }: FooterProps) {
                 Based in Bangladesh · Working Globally
               </p>
               <p className="mt-3.5 text-[14px] leading-[1.75] text-[#687580] max-w-md">
-                An independent entrepreneur, product builder, and software engineer dedicated to turning ambitious imagination into enduring digital ventures. Focused on clean architecture, exceptional user craft, and building software that creates lasting positive impact across borders.
+                An independent entrepreneur, CEO, and software architect dedicated to turning ambitious imagination into enduring digital ventures (Floraxen Labs, Lumora Studio, MedProfile Bangladesh, Sable for CV, and FeLoW WebStaR).
               </p>
             </div>
           </div>
@@ -122,78 +94,60 @@ export function Footer({ onOpenContact }: FooterProps) {
             </ul>
           </div>
 
-          {/* Column 4: Connect & Socials (Col span 2.5) */}
+          {/* Column 4: Connect & Socials (Col span 2.5) with Framer Motion Hover */}
           <div className="lg:col-span-2">
             <p className="text-[12px] font-semibold tracking-wide text-[#111318] uppercase">
-              Connect
+              Social Channels
             </p>
             <ul className="mt-4 space-y-3 text-[14px] text-[#687580]">
-              <li>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#111318]"
-                >
-                  <Github className="h-4 w-4 text-[#687580]" aria-hidden="true" />
-                  <span>GitHub</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#111318]"
-                >
-                  <Linkedin className="h-4 w-4 text-[#687580]" aria-hidden="true" />
-                  <span>LinkedIn</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://x.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#111318]"
-                >
-                  <Twitter className="h-4 w-4 text-[#687580]" aria-hidden="true" />
-                  <span>X / Twitter</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-[#111318]"
-                >
-                  <Facebook className="h-4 w-4 text-[#687580]" aria-hidden="true" />
-                  <span>Facebook</span>
-                </a>
-              </li>
+              {[
+                { label: 'Facebook', icon: Facebook },
+                { label: 'Instagram', icon: Instagram },
+                { label: 'Threads', icon: MessageCircle },
+                { label: 'X (Twitter)', icon: Twitter },
+                { label: 'Telegram', icon: Send },
+                { label: 'GitHub', icon: Github },
+                { label: 'LinkedIn', icon: Linkedin },
+              ].map((social) => {
+                const IconComponent = social.icon;
+                return (
+                  <motion.li key={social.label} whileHover={{ scale: 1.06, x: 2 }} transition={{ duration: 0.2 }}>
+                    <a
+                      href="#"
+                      className="inline-flex items-center gap-2 text-[#687580] hover:text-[#2587B8] transition-colors"
+                    >
+                      <IconComponent className="h-4 w-4 shrink-0" aria-hidden="true" />
+                      <span>{social.label}</span>
+                    </a>
+                  </motion.li>
+                );
+              })}
             </ul>
           </div>
 
-          {/* Column 5: More (Col span 2.5) */}
+          {/* Column 5: More (Col span 3) */}
           <div className="lg:col-span-3">
             <p className="text-[12px] font-semibold tracking-wide text-[#111318] uppercase">
-              More
+              Startups &amp; Ventures
             </p>
             <ul className="mt-4 space-y-3 text-[14px] text-[#687580]">
               <li>
-                <span className="font-medium text-[#111318]">Currently Building</span>
-                <p className="text-[12px] text-[#687580]/80">Digital ventures &amp; AI systems</p>
+                <span className="font-medium text-[#111318]">Floraxen Labs &amp; Lumora Studio</span>
+                <p className="text-[12px] text-[#687580]/80">Research, software &amp; design studio</p>
               </li>
               <li>
-                <span className="font-medium text-[#111318]">Product Craft</span>
-                <p className="text-[12px] text-[#687580]/80">Clean code &amp; design systems</p>
+                <span className="font-medium text-[#111318]">MedProfile Bangladesh</span>
+                <p className="text-[12px] text-[#687580]/80">Healthcare professional network</p>
+              </li>
+              <li>
+                <span className="font-medium text-[#111318]">Sable for CV &amp; FeLoW WebStaR</span>
+                <p className="text-[12px] text-[#687580]/80">Open source creator tools</p>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={handleScrollTop}
-                  className="inline-flex items-center gap-1 text-[13px] font-medium text-[#2587B8] transition-colors hover:text-[#111318] cursor-pointer mt-1"
+                  className="inline-flex items-center gap-1 text-[13px] font-medium text-[#2587B8] transition-colors hover:text-[#111318] cursor-pointer mt-2"
                 >
                   <span>Back to Top</span>
                   <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
@@ -206,7 +160,7 @@ export function Footer({ onOpenContact }: FooterProps) {
         {/* 6. Final Footer Bar */}
         <div className="mt-16 flex flex-col justify-between gap-4 border-t border-[#E5EBEF] pt-8 text-[13px] text-[#687580] sm:flex-row sm:items-center">
           <p>© 2026 {BRAND.name}. All rights reserved.</p>
-          <p className="font-medium text-[#111318]">Designed &amp; Built by {BRAND.name}.</p>
+          <p className="font-medium text-[#111318]">Designed &amp; Built by {BRAND.name} (CEO &amp; Owner).</p>
         </div>
       </div>
     </footer>

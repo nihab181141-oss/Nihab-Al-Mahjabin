@@ -5,10 +5,23 @@
 
 import { MotionConfig } from 'motion/react';
 import { useState } from 'react';
+import { AboutMe } from './components/AboutMe';
+import { BlogArticles } from './components/BlogArticles';
 import { ContactModal } from './components/ContactModal';
+import { ContactSection } from './components/ContactSection';
+import { CoreExpertise } from './components/CoreExpertise';
+import { Education } from './components/Education';
+import { FeaturedProjects } from './components/FeaturedProjects';
 import { Footer } from './components/Footer';
+import { FounderManifesto } from './components/FounderManifesto';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { InterestsSide } from './components/InterestsSide';
+import { PersonalIntroduction } from './components/PersonalIntroduction';
+import { SkillsExpertise } from './components/SkillsExpertise';
+import { TechnologiesTools } from './components/TechnologiesTools';
+import { ThingsBuilt } from './components/ThingsBuilt';
+import { WorkExperience } from './components/WorkExperience';
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -37,12 +50,38 @@ export default function App() {
           className="pointer-events-none fixed top-0 right-0 z-10 h-[70vmin] w-[70vmin] min-h-[300px] min-w-[300px] max-h-[720px] max-w-[720px] origin-top-right bg-sun-glare mix-blend-screen animate-sun-glare will-change-transform"
         />
 
-        {/* Header, Hero, and Detailed Footer */}
+        {/* Complete Master Elite Founder Portfolio */}
         <div className="relative z-20 flex min-h-dvh flex-col">
           <Header onOpenContact={handleOpenContact} />
 
           <main className="flex-1">
             <Hero onOpenContact={handleOpenContact} />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <PersonalIntroduction />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <AboutMe />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <FounderManifesto />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <SkillsExpertise />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <CoreExpertise />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <FeaturedProjects onOpenContact={handleOpenContact} />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <ThingsBuilt />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <WorkExperience />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <Education />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <TechnologiesTools />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <BlogArticles onOpenContact={handleOpenContact} />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <InterestsSide />
+            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
+            <ContactSection />
           </main>
 
           <Footer onOpenContact={handleOpenContact} />
