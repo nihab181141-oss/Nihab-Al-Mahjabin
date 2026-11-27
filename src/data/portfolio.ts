@@ -149,14 +149,14 @@ export const PERSONAL_INTRODUCTION = {
   statement:
     'A visionary entrepreneur, CEO, and software architect based in Bangladesh, founding and leading multiple high-impact digital ventures.',
   vision:
-    'As the owner and CEO of FeLoW WebStaR, SABLE, Floraxen Labs, Lumora Studio, and MedProfile Bangladesh, my life work is dedicated to conceiving, designing, and launching digital products that combine rigorous engineering with uncompromising aesthetic taste.',
+    'As the owner and CEO of FeLoW WebStaR, SABLE, Al Jabin Publications, Floraxen Labs, Lumora Studio, and MedProfile Bangladesh, my life work is dedicated to conceiving, designing, and launching digital products that combine rigorous engineering with uncompromising aesthetic taste.',
 };
 
 export const ABOUT_ME = {
   title: 'Driven by vision, anchored in leadership and execution.',
   paragraphs: [
     'My journey as an entrepreneur and CEO began with a fundamental belief: that ambitious digital ventures can originate from anywhere in the world and impact millions.',
-    'Today, I lead multiple independent startups and platforms—including FeLoW WebStaR, SABLE, Floraxen Labs, Lumora Studio, and MedProfile Bangladesh. I thrive at the intersection of executive strategy, system architecture, and human-centered design.',
+    'Today, I lead multiple independent startups and platforms—including FeLoW WebStaR, SABLE, Al Jabin Publications, Floraxen Labs, Lumora Studio, and MedProfile Bangladesh. I thrive at the intersection of executive strategy, system architecture, and human-centered design.',
     'When I am not scaling startups or architecting codebases, you can find me studying architectural geometry, exploring global market trends, and mentoring emerging tech leaders.',
   ],
 };
@@ -183,6 +183,14 @@ export const FEATURED_PROJECTS = [
     metrics: 'Founder & Owner · Open Source',
     url: 'https://sable-for-cv.netlify.app/',
     logoSrc: '/assets/aistudio/sable-horizontal-color_b501b6d2.svg',
+  },
+  {
+    title: 'Al Jabin Publications',
+    category: 'Independent Publishing House',
+    summary: 'Al Jabin Publications is a premium independent publishing house offering thoughtful ebooks, practical guides, self-publishing tools, and enduring ideas for readers and authors in Bangladesh and worldwide.',
+    metrics: 'Founder & CEO · Digital Publishing',
+    url: 'https://al-jabin-publications.vercel.app/',
+    logoSrc: '/assets/aistudio/al-jabin-publications-wordmark-color_968ade48.svg',
   },
   {
     title: 'Floraxen Labs',
@@ -213,6 +221,7 @@ export const FEATURED_PROJECTS = [
 export const THINGS_BUILT = [
   { name: 'FeLoW WebStaR', desc: 'Tutor discovery platform connecting students and parents with suitable tutors.' },
   { name: 'SABLE for CV', desc: 'Completely free, AI-powered CV maker for students and job seekers in Bangladesh.' },
+  { name: 'Al Jabin Publications', desc: 'Independent publishing house with curated ebooks, practical guides, and self-publishing tools.' },
 ];
 
 export const WORK_EXPERIENCE = [
@@ -221,6 +230,12 @@ export const WORK_EXPERIENCE = [
     company: 'FeLoW WebStaR & SABLE',
     period: '2024 — Present',
     description: 'Building accessible community-driven tutor discovery and AI-powered career enablement platforms.',
+  },
+  {
+    role: 'Founder & CEO',
+    company: 'Al Jabin Publications',
+    period: '2026 — Present',
+    description: 'Directing an independent publishing house delivering thoughtful ebooks, practical guides, and self-publishing tools.',
   },
   {
     role: 'Founder, CEO & Owner',
@@ -253,7 +268,7 @@ export const EDUCATION_LIST = [
     degree: 'Venture Leadership & Startup Execution',
     institution: 'Real-World CEO & Founder Journey',
     period: '2023 — Present',
-    highlights: 'Successfully founded and scaling 5+ active startups and digital platforms.',
+    highlights: 'Successfully founded and scaling 6+ active startups and digital platforms.',
   },
 ];
 
@@ -372,11 +387,28 @@ export const VENTURE_LOGOS: Record<string, VentureLogo> = {
     tierOneClass: 'h-12 sm:h-14 lg:h-16',
     tierTwoClass: 'h-20 sm:h-24 lg:h-28',
   },
+  alJabinWordmark: {
+    id: 'al-jabin-publications-wordmark',
+    src: '/assets/aistudio/al-jabin-publications-wordmark-color_968ade48.svg',
+    alt: 'Al Jabin Publications',
+    kind: 'wordmark',
+    tierOneClass: 'h-20 sm:h-24 lg:h-28',
+    tierTwoClass: 'h-16 sm:h-20 lg:h-24',
+  },
+  alJabinIcon: {
+    id: 'al-jabin-publications-icon',
+    src: '/assets/aistudio/al-jabin-publications-icon-color_5b7e2d55.svg',
+    alt: 'Al Jabin Publications Emblem',
+    kind: 'icon',
+    tierOneClass: 'h-16 sm:h-20 lg:h-24',
+    tierTwoClass: 'h-20 sm:h-24 lg:h-28',
+  },
 };
 
 export const VENTURE_WORDMARKS: VentureLogo[] = [
   VENTURE_LOGOS.felowWordmark,
   VENTURE_LOGOS.sableHorizontal,
+  VENTURE_LOGOS.alJabinWordmark,
   VENTURE_LOGOS.floraxenLabsWordmark,
   VENTURE_LOGOS.medprofileWordmark,
 ];
@@ -386,14 +418,18 @@ export const FEATURED_WORDMARKS = VENTURE_WORDMARKS;
 export const VENTURE_GRID_ROW_ONE: VentureLogo[] = [
   VENTURE_LOGOS.felowIcon,
   VENTURE_LOGOS.sableColor,
+  VENTURE_LOGOS.alJabinIcon,
   VENTURE_LOGOS.floraxenIcon,
   VENTURE_LOGOS.floraxenLabsWordmark,
+  VENTURE_LOGOS.alJabinWordmark,
   VENTURE_LOGOS.medprofileSymbol,
 ];
 
 export const VENTURE_GRID_ROW_TWO: VentureLogo[] = [
   VENTURE_LOGOS.floraxenLabsIcon,
+  VENTURE_LOGOS.alJabinWordmark,
   VENTURE_LOGOS.felowWordmark,
+  VENTURE_LOGOS.alJabinIcon,
   VENTURE_LOGOS.sableIcon,
   VENTURE_LOGOS.medprofileWordmark,
 ];

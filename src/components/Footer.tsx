@@ -65,7 +65,7 @@ export function Footer({ onOpenContact }: FooterProps) {
                 Based in Bangladesh · Working Globally
               </p>
               <p className="mt-3.5 text-[14px] leading-[1.75] text-[#687580] max-w-md">
-                An independent entrepreneur, CEO, and software architect dedicated to turning ambitious imagination into enduring digital ventures (Floraxen Labs, Lumora Studio, MedProfile Bangladesh, Sable for CV, and FeLoW WebStaR).
+                An independent entrepreneur, CEO, and software architect dedicated to turning ambitious imagination into enduring digital ventures (Floraxen Labs, Lumora Studio, Al Jabin Publications, MedProfile Bangladesh, Sable for CV, and FeLoW WebStaR).
               </p>
             </div>
           </div>
@@ -134,6 +134,10 @@ export function Footer({ onOpenContact }: FooterProps) {
               <li>
                 <span className="font-medium text-[#111318]">Floraxen Labs &amp; Lumora Studio</span>
                 <p className="text-[12px] text-[#687580]/80">Research, software &amp; design studio</p>
+              </li>
+              <li>
+                <span className="font-medium text-[#111318]">Al Jabin Publications</span>
+                <p className="text-[12px] text-[#687580]/80">Independent publishing &amp; ebooks</p>
               </li>
               <li>
                 <span className="font-medium text-[#111318]">MedProfile Bangladesh</span>

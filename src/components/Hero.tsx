@@ -89,12 +89,12 @@ export function Hero({ onOpenContact }: HeroProps) {
         </div>
 
         <div className="mt-6 sm:mt-8">
-          {/* Upper Tier: 2-col mobile -> 4-col desktop grid for Flagship Wordmarks */}
-          <div className="grid grid-cols-2 items-center justify-items-center gap-x-5 gap-y-4 sm:gap-x-7 sm:gap-y-5 md:grid-cols-4 lg:gap-x-9">
+          {/* Upper Tier: Responsive flex/grid for Flagship Wordmarks */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-x-8 sm:gap-y-5 lg:grid lg:grid-cols-5 lg:justify-items-center lg:gap-x-8">
             {FEATURED_WORDMARKS.map((logo) => (
               <div
                 key={`featured-${logo.id}`}
-                className="flex min-h-[84px] w-full items-center justify-center sm:min-h-[104px] lg:min-h-[116px]"
+                className="flex min-h-[84px] min-w-[140px] items-center justify-center sm:min-h-[104px] lg:min-h-[116px] lg:w-full lg:min-w-0"
               >
                 <img
                   src={logo.src}
