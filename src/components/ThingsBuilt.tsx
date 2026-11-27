@@ -8,14 +8,14 @@ export function ThingsBuilt() {
       className="mx-auto max-w-[1200px] px-5 py-24 sm:px-7 sm:py-28 lg:px-10 lg:py-32"
     >
       <div className="mx-auto max-w-3xl text-center">
-        <div className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+        <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
           <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
           <span>Open Source &amp; Tooling</span>
           <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
         </div>
         <h2
           id="built-heading"
-          className="mt-4 font-[family-name:var(--font-heading)] text-[34px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[44px] lg:text-[50px] [text-wrap:balance]"
+          className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.16] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[44px] sm:leading-[1.1] sm:tracking-[-0.03em] lg:text-[50px] [text-wrap:balance]"
         >
           Things I&apos;ve Built &amp;{' '}
           <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">
@@ -35,12 +35,12 @@ export function ThingsBuilt() {
               <span className="font-mono text-[15px] font-bold text-[#2587B8] tabular-nums">
                 0{idx + 1}
               </span>
-              <h3 className="font-[family-name:var(--font-heading)] text-[22px] font-extrabold tracking-tight text-[#111318]">
+              <h3 className="font-[family-name:var(--font-heading)] text-[20px] sm:text-[22px] leading-[1.24] font-extrabold tracking-tight text-[#111318]">
                 {tool.name}
               </h3>
             </div>
             <div className="md:col-span-7">
-              <p className="text-[15.5px] leading-[1.8] text-[#475569]">{tool.desc}</p>
+              <p className="text-[14.5px] leading-[1.75] text-[#475569] sm:text-[15.5px] sm:leading-[1.8]">{tool.desc}</p>
             </div>
           </div>
         ))}

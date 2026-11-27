@@ -28,13 +28,13 @@ export function FeaturedProjects({}: FeaturedProjectsProps) {
     >
       <FadeIn className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
         <div>
-          <div className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+          <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
             <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
             <span>Featured Ventures</span>
           </div>
           <h2
             id="projects-heading"
-            className="mt-4 font-[family-name:var(--font-heading)] text-[34px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[44px] lg:text-[50px] [text-wrap:balance]"
+            className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.16] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[44px] sm:leading-[1.1] sm:tracking-[-0.03em] lg:text-[50px] [text-wrap:balance]"
           >
             Startups &amp;{' '}
             <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">
@@ -43,7 +43,7 @@ export function FeaturedProjects({}: FeaturedProjectsProps) {
             I lead.
           </h2>
         </div>
-        <p className="max-w-md text-[15.5px] leading-[1.75] text-[#475569]">
+        <p className="max-w-md text-[15px] leading-[1.72] text-[#475569] sm:text-[15.5px] sm:leading-[1.75]">
           Each venture is designed around real human needs, clean craft, and lasting utility.
         </p>
       </FadeIn>
@@ -71,10 +71,10 @@ export function FeaturedProjects({}: FeaturedProjectsProps) {
               </div>
 
               <div className="lg:col-span-5">
-                <h3 className="font-[family-name:var(--font-heading)] text-[25px] font-extrabold tracking-tight text-[#111318] group-hover:text-[#2587B8] transition-colors">
+                <h3 className="font-[family-name:var(--font-heading)] text-[22px] sm:text-[25px] leading-[1.22] font-extrabold tracking-tight text-[#111318] group-hover:text-[#2587B8] transition-colors">
                   {proj.title}
                 </h3>
-                <p className="mt-3 text-[15.5px] leading-[1.8] text-[#475569]">
+                <p className="mt-3 text-[15px] leading-[1.75] text-[#475569] sm:text-[15.5px] sm:leading-[1.8]">
                   {proj.summary}
                 </p>
                 {proj.url && (
@@ -83,14 +83,14 @@ export function FeaturedProjects({}: FeaturedProjectsProps) {
                       href={proj.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-mono text-[13.5px] font-semibold text-[#2587B8] hover:underline underline-offset-4"
+                      className="inline-flex max-w-full items-center gap-2 font-mono text-[12.5px] sm:text-[13.5px] font-semibold text-[#2587B8] hover:underline underline-offset-4"
                       onClick={(e) => {
                         e.preventDefault();
                         handleVisitUrl(proj.url);
                       }}
                     >
                       <Globe className="h-4 w-4 shrink-0" aria-hidden="true" />
-                      <span>{proj.url}</span>
+                      <span className="break-all sm:break-normal">{proj.url}</span>
                       <ArrowUpRight className="h-4 w-4 shrink-0 opacity-75" aria-hidden="true" />
                     </a>
                   </div>

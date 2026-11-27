@@ -12,13 +12,13 @@ export function CoreExpertise() {
     >
       <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
         <div>
-          <div className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+          <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
             <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
             <span>Core Competencies</span>
           </div>
           <h2
             id="expertise-heading"
-            className="mt-4 font-[family-name:var(--font-heading)] text-[34px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[42px] lg:text-[48px] [text-wrap:balance]"
+            className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.16] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[42px] sm:leading-[1.1] sm:tracking-[-0.03em] lg:text-[48px] [text-wrap:balance]"
           >
             Capabilities engineered for{' '}
             <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">
@@ -27,7 +27,7 @@ export function CoreExpertise() {
             .
           </h2>
         </div>
-        <p className="max-w-md text-[16px] leading-[1.75] text-[#475569]">
+        <p className="max-w-md text-[15px] leading-[1.72] text-[#475569] sm:text-[16px] sm:leading-[1.75]">
           Bridging big-picture entrepreneurial strategy with meticulous full-stack execution from day zero to launch.
         </p>
       </div>
@@ -53,14 +53,14 @@ export function CoreExpertise() {
                       {domain.subtitle}
                     </span>
                   </div>
-                  <h3 className="mt-1.5 font-[family-name:var(--font-heading)] text-[24px] font-extrabold tracking-tight text-[#111318]">
+                  <h3 className="mt-1.5 font-[family-name:var(--font-heading)] text-[20.5px] sm:text-[24px] leading-[1.22] font-extrabold tracking-tight text-[#111318]">
                     {domain.title}
                   </h3>
                 </div>
               </div>
 
             <div className="lg:col-span-4">
-              <p className="text-[15.5px] leading-[1.8] text-[#475569]">
+              <p className="text-[14.5px] leading-[1.75] text-[#475569] sm:text-[15.5px] sm:leading-[1.8]">
                 {domain.description}
               </p>
             </div>
@@ -68,7 +68,7 @@ export function CoreExpertise() {
             <div className="lg:col-span-4">
               <ul className="space-y-3">
                 {domain.points.map((point) => (
-                  <li key={point} className="flex items-start gap-2.5 text-[14.5px] font-medium text-[#1E293B]">
+                  <li key={point} className="flex items-start gap-2.5 text-[14px] sm:text-[14.5px] leading-[1.6] font-medium text-[#1E293B]">
                     <Check className="mt-1 h-4 w-4 text-[#35B99A] shrink-0" aria-hidden="true" />
                     <span>{point}</span>
                   </li>

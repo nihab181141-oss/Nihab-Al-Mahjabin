@@ -7,6 +7,7 @@ import {
   ROTATING_ROLES,
   VENTURE_GRID_ROW_ONE,
   VENTURE_GRID_ROW_TWO,
+  VENTURE_LOGOS,
 } from '../data/portfolio';
 
 interface HeroProps {
@@ -41,7 +42,7 @@ export function Hero({ onOpenContact }: HeroProps) {
             {BRAND.name}
           </p>
 
-          <div className="mt-2.5 flex min-h-[54px] items-center justify-center overflow-hidden px-2 sm:min-h-[76px] lg:min-h-[90px]">
+          <div className="mt-2.5 flex min-h-[48px] items-center justify-center overflow-hidden px-2 sm:min-h-[76px] lg:min-h-[90px]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={activeRole}
@@ -49,7 +50,7 @@ export function Hero({ onOpenContact }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -18 }}
                 transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-                className="inline-block whitespace-nowrap font-[family-name:var(--font-accent)] text-[38px] leading-[1.12] font-bold italic tracking-[-0.025em] text-[#0c2d48] sm:text-[56px] lg:text-[72px]"
+                className="inline-block whitespace-nowrap font-[family-name:var(--font-accent)] text-[29px] min-[380px]:text-[33px] leading-[1.15] font-bold italic tracking-[-0.02em] text-[#0c2d48] sm:text-[56px] sm:leading-[1.12] sm:tracking-[-0.025em] lg:text-[72px]"
               >
                 {activeRole}
               </motion.span>
@@ -57,11 +58,11 @@ export function Hero({ onOpenContact }: HeroProps) {
           </div>
         </div>
 
-        <h1 className="mt-6 font-[family-name:var(--font-heading)] text-[30px] leading-[1.12] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[42px] lg:text-[50px] [text-wrap:balance]">
+        <h1 className="mt-5 font-[family-name:var(--font-heading)] text-[27px] min-[380px]:text-[30px] leading-[1.18] font-extrabold tracking-[-0.025em] text-[#111318] sm:mt-6 sm:text-[42px] sm:leading-[1.12] sm:tracking-[-0.03em] lg:text-[50px] [text-wrap:balance]">
           {BRAND.headline}
         </h1>
 
-        <p className="mx-auto mt-7 max-w-2xl text-[16.5px] leading-[1.8] font-medium text-[#111318]/80 sm:text-[18.5px]">
+        <p className="mx-auto mt-6 max-w-2xl text-[15.5px] leading-[1.75] font-medium text-[#111318]/80 sm:mt-7 sm:text-[18.5px] sm:leading-[1.8]">
           {BRAND.intro}
         </p>
 
@@ -83,18 +84,177 @@ export function Hero({ onOpenContact }: HeroProps) {
         className="mt-20 sm:mt-24 lg:mt-28 bg-transparent"
       >
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2587B8] sm:text-[12.5px]">
             Independent Ventures
           </p>
-          <h2 className="mt-2.5 font-[family-name:var(--font-heading)] text-[26px] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[32px] [text-wrap:balance]">
+          <h2 className="mt-2.5 font-[family-name:var(--font-heading)] text-[22px] min-[380px]:text-[24px] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[32px] [text-wrap:balance]">
             Ventures I&apos;ve <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">Brought to Life</span>
           </h2>
-          <p className="mt-3 text-[15.5px] leading-[1.7] text-[#475569] sm:text-[16.5px]">
+          <p className="mt-3 text-[14.5px] leading-[1.65] text-[#475569] sm:text-[16.5px] sm:leading-[1.7]">
             A growing collection of brands, businesses, and digital products I&apos;ve envisioned and built.
           </p>
         </div>
 
-        <div className="mt-8 sm:mt-10">
+        {/* Mobile-Only Showcase Layout (< 640px) */}
+        <div className="mt-8 sm:hidden">
+          {/* Upper Tier: Row 1 (3 logos) + Row 2 (2 logos) */}
+          <div className="space-y-4">
+            <div className="grid grid-cols-3 items-center justify-items-center gap-3">
+              <img
+                src={VENTURE_LOGOS.felowWordmark.src}
+                alt={VENTURE_LOGOS.felowWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-12 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.sableHorizontal.src}
+                alt={VENTURE_LOGOS.sableHorizontal.alt}
+                loading="eager"
+                draggable={false}
+                className="h-12 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.alJabinWordmark.src}
+                alt={VENTURE_LOGOS.alJabinWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-12 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+            </div>
+
+            <div className="flex items-center justify-center gap-7">
+              <img
+                src={VENTURE_LOGOS.floraxenLabsWordmark.src}
+                alt={VENTURE_LOGOS.floraxenLabsWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-10 w-auto max-w-full object-contain select-none pointer-events-none drop-shadow-[0_2px_10px_rgba(17,19,24,0.08)]"
+              />
+              <img
+                src={VENTURE_LOGOS.medprofileWordmark.src}
+                alt={VENTURE_LOGOS.medprofileWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-14 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+            </div>
+          </div>
+
+          <div
+            aria-hidden="true"
+            className="mx-auto my-5 h-px w-full bg-[#111318]/12"
+          />
+
+          {/* Lower Tier: 4 + 3 + 4 + 2 balanced rows */}
+          <div className="space-y-4">
+            <div className="mx-auto grid max-w-[300px] grid-cols-4 items-center justify-items-center gap-3">
+              <img
+                src={VENTURE_LOGOS.felowIcon.src}
+                alt={VENTURE_LOGOS.felowIcon.alt}
+                loading="eager"
+                draggable={false}
+                className="h-11 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.sableColor.src}
+                alt={VENTURE_LOGOS.sableColor.alt}
+                loading="eager"
+                draggable={false}
+                className="h-14 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.alJabinIcon.src}
+                alt={VENTURE_LOGOS.alJabinIcon.alt}
+                loading="eager"
+                draggable={false}
+                className="h-11 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.floraxenIcon.src}
+                alt={VENTURE_LOGOS.floraxenIcon.alt}
+                loading="eager"
+                draggable={false}
+                className="h-10 w-auto max-w-full object-contain select-none pointer-events-none drop-shadow-[0_2px_10px_rgba(17,19,24,0.12)]"
+              />
+            </div>
+
+            <div className="flex items-center justify-center gap-5">
+              <img
+                src={VENTURE_LOGOS.floraxenLabsWordmark.src}
+                alt={VENTURE_LOGOS.floraxenLabsWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-9 w-auto max-w-full object-contain select-none pointer-events-none drop-shadow-[0_2px_8px_rgba(17,19,24,0.08)]"
+              />
+              <img
+                src={VENTURE_LOGOS.alJabinWordmark.src}
+                alt={VENTURE_LOGOS.alJabinWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-11 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.medprofileSymbol.src}
+                alt={VENTURE_LOGOS.medprofileSymbol.alt}
+                loading="eager"
+                draggable={false}
+                className="h-10 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+            </div>
+
+            <div className="flex items-center justify-center gap-3 min-[380px]:gap-5">
+              <img
+                src={VENTURE_LOGOS.floraxenLabsIcon.src}
+                alt={VENTURE_LOGOS.floraxenLabsIcon.alt}
+                loading="eager"
+                draggable={false}
+                className="h-10 w-auto max-w-full object-contain select-none pointer-events-none drop-shadow-[0_2px_10px_rgba(17,19,24,0.12)]"
+              />
+              <img
+                src={VENTURE_LOGOS.alJabinWordmark.src}
+                alt={VENTURE_LOGOS.alJabinWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-10 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.felowWordmark.src}
+                alt={VENTURE_LOGOS.felowWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-10 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.alJabinIcon.src}
+                alt={VENTURE_LOGOS.alJabinIcon.alt}
+                loading="eager"
+                draggable={false}
+                className="h-10 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+            </div>
+
+            <div className="flex items-center justify-center gap-7">
+              <img
+                src={VENTURE_LOGOS.sableIcon.src}
+                alt={VENTURE_LOGOS.sableIcon.alt}
+                loading="eager"
+                draggable={false}
+                className="h-14 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+              <img
+                src={VENTURE_LOGOS.medprofileWordmark.src}
+                alt={VENTURE_LOGOS.medprofileWordmark.alt}
+                loading="eager"
+                draggable={false}
+                className="h-13 w-auto max-w-full object-contain select-none pointer-events-none"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Tablet & Desktop Showcase Layout (>= 640px) - Unchanged */}
+        <div className="mt-8 hidden sm:block sm:mt-10">
           {/* Upper Tier: Responsive flex/grid for Flagship Wordmarks */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-x-8 sm:gap-y-5 lg:grid lg:grid-cols-5 lg:justify-items-center lg:gap-x-8">
             {FEATURED_WORDMARKS.map((logo) => (

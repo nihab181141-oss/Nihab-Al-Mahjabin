@@ -13,14 +13,14 @@ export function FounderManifesto() {
     >
       <FadeIn>
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+          <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
             <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
             <span>Founder Philosophy &amp; Vision</span>
             <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
           </div>
           <h2
             id="manifesto-heading"
-            className="mt-4 font-[family-name:var(--font-heading)] text-[34px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[44px] lg:text-[50px] [text-wrap:balance]"
+            className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.16] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[44px] sm:leading-[1.1] sm:tracking-[-0.03em] lg:text-[50px] [text-wrap:balance]"
           >
             First principles.{' '}
             <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">
@@ -28,7 +28,7 @@ export function FounderManifesto() {
             </span>{' '}
             Unwavering vision.
           </h2>
-          <p className="mt-5 text-[16px] leading-[1.8] text-[#475569] sm:text-[18px]">
+          <p className="mt-4 sm:mt-5 text-[15px] leading-[1.75] text-[#475569] sm:text-[18px] sm:leading-[1.8]">
             The best businesses and software are built not by following convention, but by reasoning from fundamental truths and obsessing over every detail.
           </p>
         </div>
@@ -52,18 +52,18 @@ export function FounderManifesto() {
                       {point.index}
                     </span>
                   </div>
-                  <span className="text-[12px] font-bold uppercase tracking-wider text-[#475569]">
+                  <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-wider text-[#475569]">
                     {point.subtitle}
                   </span>
                 </div>
-                <h3 className="mt-5 font-[family-name:var(--font-heading)] text-[23px] font-extrabold tracking-tight text-[#111318]">
+                <h3 className="mt-5 font-[family-name:var(--font-heading)] text-[20px] sm:text-[23px] leading-[1.24] font-extrabold tracking-tight text-[#111318]">
                   {point.title}
                 </h3>
-                <p className="mt-3.5 text-[15.5px] leading-[1.8] text-[#475569]">
+                <p className="mt-3 sm:mt-3.5 text-[14.5px] leading-[1.75] text-[#475569] sm:text-[15.5px] sm:leading-[1.8]">
                   {point.description}
                 </p>
               </div>
-              <p className="mt-6 border-t border-[#111318]/8 pt-4 text-[14px] font-semibold text-[#0c2d48]">
+              <p className="mt-6 border-t border-[#111318]/8 pt-4 text-[13.5px] sm:text-[14px] leading-[1.6] font-semibold text-[#0c2d48]">
                 {point.benefit}
               </p>
             </div>

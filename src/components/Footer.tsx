@@ -119,18 +119,18 @@ export function Footer({ onOpenContact }: FooterProps) {
       <div className="mx-auto max-w-[1200px] px-5 pt-24 pb-16 sm:px-7 sm:pt-28 sm:pb-20 lg:px-10">
         <div className="rounded-[32px] border border-[#111318]/10 bg-[#EDF4F7]/75 p-8 sm:p-12 lg:p-16 shadow-[0_20px_50px_-28px_rgba(12,45,72,0.16)]">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+            <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
               <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
               <span>Let&apos;s Connect</span>
             </div>
-            <h2 className="mt-4 font-[family-name:var(--font-heading)] text-[36px] leading-[1.08] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[46px] lg:text-[54px] [text-wrap:balance]">
+            <h2 className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.15] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[46px] sm:leading-[1.08] sm:tracking-[-0.03em] lg:text-[54px] [text-wrap:balance]">
               Let&apos;s build something{' '}
               <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">
                 remarkable
               </span>{' '}
               together.
             </h2>
-            <p className="mt-5 text-[16px] leading-[1.8] text-[#475569] sm:text-[18px]">
+            <p className="mt-4 sm:mt-5 text-[15px] leading-[1.75] text-[#475569] sm:text-[18px] sm:leading-[1.8]">
               Whether you are looking to launch a new digital venture, architect a high-performance web product, or discuss an ambitious idea from scratch, I&apos;m always open to meaningful collaborations.
             </p>
 
@@ -158,17 +158,17 @@ export function Footer({ onOpenContact }: FooterProps) {
                   alt="Nihab Al Mahjabin Emblem"
                   className="h-10 w-10 object-contain"
                 />
-                <span className="font-[family-name:var(--font-heading)] text-[20px] font-extrabold tracking-tight text-[#111318]">
+                <span className="font-[family-name:var(--font-heading)] text-[18px] sm:text-[20px] font-extrabold tracking-tight text-[#111318]">
                   {BRAND.name}
                 </span>
               </div>
             </div>
 
             <div>
-              <p className="text-[13.5px] font-bold text-[#2587B8]">
+              <p className="text-[13px] sm:text-[13.5px] font-bold text-[#2587B8]">
                 Based in Bangladesh · Working Globally
               </p>
-              <p className="mt-3.5 text-[15px] leading-[1.8] text-[#475569] max-w-md">
+              <p className="mt-3 sm:mt-3.5 text-[14.5px] leading-[1.75] text-[#475569] sm:text-[15px] sm:leading-[1.8] max-w-md">
                 An independent entrepreneur, CEO, and software architect dedicated to turning ambitious imagination into enduring digital ventures (Floraxen Labs, Lumora Studio, Al Jabin Publications, MedProfile Bangladesh, Sable for CV, and FeLoW WebStaR).
               </p>
             </div>

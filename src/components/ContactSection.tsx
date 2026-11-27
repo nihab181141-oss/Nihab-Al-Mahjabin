@@ -22,14 +22,14 @@ export function ContactSection() {
     >
       <div className="mx-auto max-w-2xl">
         <div className="text-center">
-          <div className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+          <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
             <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
             <span>Get In Touch</span>
             <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
           </div>
           <h2
             id="contact-section-heading"
-            className="mt-4 font-[family-name:var(--font-heading)] text-[34px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[44px] lg:text-[48px] [text-wrap:balance]"
+            className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.16] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[44px] sm:leading-[1.1] sm:tracking-[-0.03em] lg:text-[48px] [text-wrap:balance]"
           >
             Let&apos;s talk about your{' '}
             <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">

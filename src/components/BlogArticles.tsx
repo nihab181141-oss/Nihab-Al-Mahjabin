@@ -13,14 +13,14 @@ export function BlogArticles({ onOpenContact }: BlogArticlesProps) {
       className="mx-auto max-w-[1200px] px-5 py-24 sm:px-7 sm:py-28 lg:px-10 lg:py-32"
     >
       <div className="mx-auto max-w-3xl text-center">
-        <div className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+        <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
           <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
           <span>Articles &amp; Essays</span>
           <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
         </div>
         <h2
           id="blog-heading"
-          className="mt-4 font-[family-name:var(--font-heading)] text-[34px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[44px] lg:text-[50px] [text-wrap:balance]"
+          className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.16] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[44px] sm:leading-[1.1] sm:tracking-[-0.03em] lg:text-[50px] [text-wrap:balance]"
         >
           Writing on technology,{' '}
           <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">
@@ -52,7 +52,7 @@ export function BlogArticles({ onOpenContact }: BlogArticlesProps) {
                     {art.read}
                   </span>
                 </div>
-                <h3 className="mt-2 font-[family-name:var(--font-heading)] text-[22px] font-extrabold tracking-tight text-[#111318] group-hover:text-[#2587B8] transition-colors">
+                <h3 className="mt-2 font-[family-name:var(--font-heading)] text-[19.5px] sm:text-[22px] leading-[1.25] font-extrabold tracking-tight text-[#111318] group-hover:text-[#2587B8] transition-colors">
                   {art.title}
                 </h3>
               </div>
