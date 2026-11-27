@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: 'Ventures', href: '#ventures' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Insights', href: '#insights' },
+  { label: 'Writing', href: '#blog' },
   { label: 'Contact', href: '#contact-section' },
 ];
 
@@ -22,8 +22,8 @@ export function Header({ onOpenContact }: HeaderProps) {
   return (
     <>
       <header className="relative z-40 w-full px-5 pt-5 sm:px-7 sm:pt-6 lg:px-10">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="flex h-12 items-center justify-between gap-6">
+        <div className="mx-auto max-w-[1200px] border-b border-[#111318]/10 pb-4">
+          <div className="flex h-13 items-center justify-between gap-6">
             <a
               href="#top"
               className="flex items-center gap-3 whitespace-nowrap shrink-0 transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
@@ -42,13 +42,13 @@ export function Header({ onOpenContact }: HeaderProps) {
 
             <nav
               aria-label="Primary navigation"
-              className="hidden lg:flex items-center gap-6 text-[13px] font-medium text-[#111318]/80"
+              className="hidden lg:flex items-center gap-7 text-[14px] font-semibold text-[#111318]/85"
             >
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="whitespace-nowrap shrink-0 py-1 transition-colors duration-150 hover:text-[#111318] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
+                  className="whitespace-nowrap shrink-0 py-1.5 transition-colors duration-150 hover:text-[#2587B8] hover:underline underline-offset-4 decoration-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
                 >
                   {link.label}
                 </a>
@@ -59,7 +59,7 @@ export function Header({ onOpenContact }: HeaderProps) {
               <button
                 type="button"
                 onClick={() => onOpenContact('General Hello')}
-                className="hidden sm:inline-flex h-[42px] items-center justify-center rounded-full bg-[#111318] px-5 text-[13px] font-medium text-white whitespace-nowrap shrink-0 transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#1f242d] hover:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111318] cursor-pointer"
+                className="hidden sm:inline-flex h-[44px] items-center justify-center rounded-full bg-[#111318] px-6 text-[13.5px] font-semibold text-white whitespace-nowrap shrink-0 shadow-[0_6px_18px_-6px_rgba(17,19,24,0.35)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#1f242d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111318] cursor-pointer"
               >
                 Get in Touch
               </button>

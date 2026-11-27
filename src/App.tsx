@@ -18,6 +18,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { InterestsSide } from './components/InterestsSide';
 import { PersonalIntroduction } from './components/PersonalIntroduction';
+import { SectionBarrier } from './components/SectionBarrier';
 import { SkillsExpertise } from './components/SkillsExpertise';
 import { TechnologiesTools } from './components/TechnologiesTools';
 import { ThingsBuilt } from './components/ThingsBuilt';
@@ -56,32 +57,71 @@ export default function App() {
 
           <main className="flex-1">
             <Hero onOpenContact={handleOpenContact} />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <PersonalIntroduction />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <AboutMe />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <FounderManifesto />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <SkillsExpertise />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <CoreExpertise />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <FeaturedProjects onOpenContact={handleOpenContact} />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <ThingsBuilt />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <WorkExperience />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <Education />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <TechnologiesTools />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <BlogArticles onOpenContact={handleOpenContact} />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <InterestsSide />
-            <hr aria-hidden="true" className="border-t-[1.5px] border-[#CBD5E1] max-w-[1200px] mx-auto my-0" />
-            <ContactSection />
+
+            <SectionBarrier index="01" label="Personal Introduction" tone="white" />
+            <div className="bg-white/90">
+              <PersonalIntroduction />
+            </div>
+
+            <SectionBarrier index="02" label="About Me" tone="sky" />
+            <div className="bg-[#EDF4F7]">
+              <AboutMe />
+            </div>
+
+            <SectionBarrier index="03" label="Founder Philosophy" tone="white" />
+            <div className="bg-white/95">
+              <FounderManifesto />
+            </div>
+
+            <SectionBarrier index="04" label="Skills & Expertise" tone="mist" />
+            <div className="bg-[#E5F0F6]/85">
+              <SkillsExpertise />
+            </div>
+
+            <SectionBarrier index="05" label="Core Competencies" tone="white" />
+            <div className="bg-white/95">
+              <CoreExpertise />
+            </div>
+
+            <SectionBarrier index="06" label="Featured Ventures" tone="sky" />
+            <div className="bg-[#EDF4F7]">
+              <FeaturedProjects onOpenContact={handleOpenContact} />
+            </div>
+
+            <SectionBarrier index="07" label="Things Built" tone="white" />
+            <div className="bg-white/95">
+              <ThingsBuilt />
+            </div>
+
+            <SectionBarrier index="08" label="Work Experience" tone="mist" />
+            <div className="bg-[#E5F0F6]/85">
+              <WorkExperience />
+            </div>
+
+            <SectionBarrier index="09" label="Education & Roots" tone="white" />
+            <div className="bg-white/95">
+              <Education />
+            </div>
+
+            <SectionBarrier index="10" label="Technologies & Tools" tone="sky" />
+            <div className="bg-[#EDF4F7]">
+              <TechnologiesTools />
+            </div>
+
+            <SectionBarrier index="11" label="Articles & Essays" tone="white" />
+            <div className="bg-white/95">
+              <BlogArticles onOpenContact={handleOpenContact} />
+            </div>
+
+            <SectionBarrier index="12" label="Personal Side" tone="mist" />
+            <div className="bg-[#E5F0F6]/85">
+              <InterestsSide />
+            </div>
+
+            <SectionBarrier index="13" label="Get In Touch" tone="white" />
+            <div className="bg-white/90">
+              <ContactSection />
+            </div>
           </main>
 
           <Footer onOpenContact={handleOpenContact} />

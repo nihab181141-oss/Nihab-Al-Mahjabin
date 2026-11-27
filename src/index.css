@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-heading: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-accent: "Fraunces", ui-serif, Georgia, serif;
 
   --color-brand-blue: #39a9d5;
@@ -10,8 +10,8 @@
   --color-page-bg: #edf4f7;
   --color-surface: #ffffff;
   --color-ink: #111318;
-  --color-muted: #687580;
-  --color-hairline: #e5ebef;
+  --color-muted: #475569;
+  --color-hairline: #dce6ec;
   --color-accent-green: #35b99a;
   --color-chart-orange: #f28b4b;
   --color-chart-blue: #347be5;
@@ -87,6 +87,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(57, 169, 213, 0.22);
+    color: #0c2d48;
   }
 
   h1,

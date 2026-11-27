@@ -24,24 +24,31 @@ export function FeaturedProjects({}: FeaturedProjectsProps) {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="mx-auto max-w-[1200px] px-5 py-20 sm:px-7 sm:py-24 lg:px-10 lg:py-28"
+      className="mx-auto max-w-[1200px] px-5 py-24 sm:px-7 sm:py-28 lg:px-10 lg:py-32"
     >
       <FadeIn className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
         <div>
-          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
-            Featured Ventures
-          </p>
+          <div className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#2587B8]">
+            <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
+            <span>Featured Ventures</span>
+          </div>
           <h2
             id="projects-heading"
-            className="mt-3 font-[family-name:var(--font-heading)] text-[32px] leading-[1.12] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[38px] lg:text-[44px] [text-wrap:balance]"
+            className="mt-4 font-[family-name:var(--font-heading)] text-[34px] leading-[1.1] font-extrabold tracking-[-0.03em] text-[#111318] sm:text-[44px] lg:text-[50px] [text-wrap:balance]"
           >
-            Startups &amp; digital ecosystems I lead.
+            Startups &amp;{' '}
+            <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">
+              digital ecosystems
+            </span>{' '}
+            I lead.
           </h2>
         </div>
+        <p className="max-w-md text-[15.5px] leading-[1.75] text-[#475569]">
+          Each venture is designed around real human needs, clean craft, and lasting utility.
+        </p>
       </FadeIn>
 
-      {/* WordPress Editorial Template Style with Real Website Preview Frames */}
-      <FadeIn delay={0.15} className="mt-14 divide-y divide-[#E5EBEF] border-y border-[#E5EBEF]">
+      <FadeIn delay={0.15} className="mt-16 divide-y divide-[#111318]/14 border-y border-[#111318]/14">
         {FEATURED_PROJECTS.map((proj, idx) => {
           const screenshotUrl = `https://api.microlink.io/?url=${encodeURIComponent(proj.url || '')}&screenshot=true&meta=false&embed=screenshot.url`;
           const hasError = imageErrors[proj.title];
@@ -49,42 +56,42 @@ export function FeaturedProjects({}: FeaturedProjectsProps) {
           return (
             <div
               key={proj.title}
-              className="group py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center transition-colors duration-200 hover:bg-white/40 px-4 sm:px-6 rounded-lg"
+              className="group bg-transparent py-10 sm:py-12 px-2 sm:px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
               <div className="lg:col-span-3 flex items-center lg:items-start gap-4">
-                <span className="font-mono text-[20px] font-bold text-[#2587B8] tabular-nums">
+                <span className="font-mono text-[24px] font-bold text-[#2587B8] tabular-nums">
                   0{idx + 1}
                 </span>
                 <div>
-                  <span className="text-[12px] font-semibold uppercase tracking-wider text-[#2587B8]">
+                  <span className="text-[12px] font-bold uppercase tracking-wider text-[#2587B8]">
                     {proj.category}
                   </span>
-                  <p className="mt-1 font-mono text-[12px] text-[#687580]">{proj.metrics}</p>
+                  <p className="mt-1.5 font-mono text-[12.5px] font-medium text-[#475569]">{proj.metrics}</p>
                 </div>
               </div>
 
               <div className="lg:col-span-5">
-                <h3 className="font-[family-name:var(--font-heading)] text-[22px] font-bold tracking-tight text-[#111318] group-hover:text-[#2587B8] transition-colors">
+                <h3 className="font-[family-name:var(--font-heading)] text-[25px] font-extrabold tracking-tight text-[#111318] group-hover:text-[#2587B8] transition-colors">
                   {proj.title}
                 </h3>
-                <p className="mt-2 text-[15px] leading-[1.75] text-[#687580]">
+                <p className="mt-3 text-[15.5px] leading-[1.8] text-[#475569]">
                   {proj.summary}
                 </p>
                 {proj.url && (
-                  <div className="mt-4">
+                  <div className="mt-5">
                     <a
                       href={proj.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-mono text-[13px] font-medium text-[#2587B8] hover:underline"
+                      className="inline-flex items-center gap-2 font-mono text-[13.5px] font-semibold text-[#2587B8] hover:underline underline-offset-4"
                       onClick={(e) => {
                         e.preventDefault();
                         handleVisitUrl(proj.url);
                       }}
                     >
-                      <Globe className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                      <Globe className="h-4 w-4 shrink-0" aria-hidden="true" />
                       <span>{proj.url}</span>
-                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                      <ArrowUpRight className="h-4 w-4 shrink-0 opacity-75" aria-hidden="true" />
                     </a>
                   </div>
                 )}
