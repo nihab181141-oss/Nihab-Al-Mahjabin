@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nihab-al-mahjabin.vercel.app/sitemap.xml

@@ -9,10 +9,10 @@ interface ContactModalProps {
 }
 
 const TOPICS = [
-  'Foundation Sprint',
-  'Flagship Product Build',
-  'Venture Partner',
-  'General Hello',
+  'Strategy Call',
+  'Product Architecture',
+  'Venture Partnership',
+  'Enterprise Web Build',
 ];
 
 export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProps) {
@@ -80,7 +80,7 @@ export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProp
               id="contact-modal-title"
               className="mt-1 font-[family-name:var(--font-heading)] text-[22px] font-bold tracking-tight text-[#111318]"
             >
-              Start a Conversation
+              Book a Strategy Call
             </h3>
           </div>
 
@@ -143,9 +143,7 @@ export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProp
                 ))}
               </div>
               {initialTopic && !TOPICS.includes(initialTopic) && (
-                <p className="mt-2 text-[12px] font-medium text-[#2587B8]">
-                  Subject: {initialTopic}
-                </p>
+                <p className="mt-2 text-[12px] font-medium text-[#2587B8]">Subject: {initialTopic}</p>
               )}
             </div>
 

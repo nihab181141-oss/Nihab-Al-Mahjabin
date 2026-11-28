@@ -5,9 +5,9 @@
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-accent: "Fraunces", ui-serif, Georgia, serif;
 
-  --color-brand-blue: #39a9d5;
+  --color-brand-blue: #24a4d8;
   --color-brand-deep: #2587b8;
-  --color-page-bg: #edf4f7;
+  --color-page-bg: #24a4d8;
   --color-surface: #ffffff;
   --color-ink: #111318;
   --color-muted: #475569;
@@ -16,9 +16,13 @@
   --color-chart-orange: #f28b4b;
   --color-chart-blue: #347be5;
 
-  --animate-cloud-drift: cloud-drift 45s ease-in-out infinite;
+  --animate-cloud-drift: cloud-drift 30s ease-in-out infinite;
+  --animate-cloud-drift-reverse: cloud-drift-reverse 24s ease-in-out infinite;
   --animate-sun-glare: sun-glare-pulse 8s ease-in-out infinite;
   --animate-fade-up: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-marquee-left: marquee-left 48s linear infinite;
+  --animate-marquee-right: marquee-right 52s linear infinite;
+  --animate-marquee-left-slow: marquee-left 62s linear infinite;
 }
 
 @keyframes cloud-drift {
@@ -27,7 +31,17 @@
     transform: translate3d(0%, 0, 0);
   }
   50% {
-    transform: translate3d(-10%, 0, 0);
+    transform: translate3d(-14%, 0, 0);
+  }
+}
+
+@keyframes cloud-drift-reverse {
+  0%,
+  100% {
+    transform: translate3d(-14%, 0, 0);
+  }
+  50% {
+    transform: translate3d(0%, 0, 0);
   }
 }
 
@@ -54,6 +68,41 @@
   }
 }
 
+@keyframes marquee-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@utility marquee-edge-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
+}
+
 @utility bg-sun-glare {
   background-image: radial-gradient(
     circle at 100% 0%,
@@ -67,11 +116,11 @@
 @utility bg-sky-page-fade {
   background-image: linear-gradient(
     to bottom,
-    rgba(237, 244, 247, 0) 0%,
-    rgba(237, 244, 247, 0.24) 30%,
-    rgba(237, 244, 247, 0.65) 60%,
-    rgba(237, 244, 247, 0.92) 84%,
-    #edf4f7 100%
+    rgba(36, 164, 216, 0) 0%,
+    rgba(36, 164, 216, 0.28) 30%,
+    rgba(36, 164, 216, 0.62) 60%,
+    rgba(36, 164, 216, 0.88) 84%,
+    #24a4d8 100%
   );
 }
 
@@ -81,7 +130,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: #edf4f7;
+    background-color: #24a4d8;
     color: #111318;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -109,8 +158,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-cloud-drift,
+  .animate-cloud-drift-reverse,
   .animate-sun-glare,
-  .animate-fade-up {
+  .animate-fade-up,
+  .animate-marquee-left,
+  .animate-marquee-right,
+  .animate-marquee-left-slow {
     animation: none;
   }
 }

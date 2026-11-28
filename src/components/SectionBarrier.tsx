@@ -15,7 +15,7 @@ export function SectionBarrier({ index, label, tone = 'sky' }: SectionBarrierPro
   return (
     <div
       aria-hidden="true"
-      className="relative w-full border-y border-[#111318]/12 bg-white/55 backdrop-blur-[2px]"
+      className="relative w-full border-y border-[#111318]/12 bg-white/45 backdrop-blur-md"
     >
       <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-4 py-3 sm:gap-4 sm:px-7 sm:py-3.5 lg:px-10">
         <span className="h-2 w-2 rotate-45 rounded-[2px] border border-[#2587B8]/60 bg-[#39A9D5]/25 shrink-0" />

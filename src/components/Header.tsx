@@ -1,23 +1,28 @@
-import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
 import { BRAND } from '../data/portfolio';
 
 interface HeaderProps {
   onOpenContact: (topic?: string) => void;
+  onNavigateHome: (sectionId?: string) => void;
 }
 
 const NAV_LINKS = [
-  { label: 'Philosophy', href: '#manifesto' },
-  { label: 'Expertise', href: '#skills' },
-  { label: 'Ventures', href: '#ventures' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Writing', href: '#blog' },
-  { label: 'Contact', href: '#contact-section' },
+  { label: 'About', sectionId: 'about' },
+  { label: 'Ventures', sectionId: 'projects' },
+  { label: 'Open Source', sectionId: 'open-source' },
+  { label: 'Experience', sectionId: 'experience' },
+  { label: 'Writing', sectionId: 'writing' },
 ];
 
-export function Header({ onOpenContact }: HeaderProps) {
+export function Header({ onOpenContact, onNavigateHome }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId?: string) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    onNavigateHome(sectionId);
+  };
 
   return (
     <>
@@ -25,12 +30,13 @@ export function Header({ onOpenContact }: HeaderProps) {
         <div className="mx-auto max-w-[1200px] border-b border-[#111318]/10 pb-4">
           <div className="flex h-13 items-center justify-between gap-6">
             <a
-              href="#top"
+              href="/"
+              onClick={(e) => handleNavClick(e)}
               className="flex items-center gap-3 whitespace-nowrap shrink-0 transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
             >
               <img
                 src="/assets/aistudio/nihab-al-mahjabin-icon-color_ca419e31.svg"
-                alt="Nihab Al Mahjabin Emblem"
+                alt="Nihab Al Mahjabin emblem"
                 className="h-11 w-11 sm:h-12 sm:w-12 object-contain"
               />
               <img
@@ -42,12 +48,13 @@ export function Header({ onOpenContact }: HeaderProps) {
 
             <nav
               aria-label="Primary navigation"
-              className="hidden lg:flex items-center gap-7 text-[14px] font-semibold text-[#111318]/85"
+              className="hidden lg:flex items-center gap-8 text-[14px] font-semibold text-[#111318]/85"
             >
               {NAV_LINKS.map((link) => (
                 <a
-                  key={link.href}
-                  href={link.href}
+                  key={link.sectionId}
+                  href={`/#${link.sectionId}`}
+                  onClick={(e) => handleNavClick(e, link.sectionId)}
                   className="whitespace-nowrap shrink-0 py-1.5 transition-colors duration-150 hover:text-[#2587B8] hover:underline underline-offset-4 decoration-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
                 >
                   {link.label}
@@ -58,10 +65,10 @@ export function Header({ onOpenContact }: HeaderProps) {
             <div className="flex items-center gap-2 shrink-0">
               <button
                 type="button"
-                onClick={() => onOpenContact('General Hello')}
+                onClick={() => onOpenContact('Strategy Call')}
                 className="hidden sm:inline-flex h-[44px] items-center justify-center rounded-full bg-[#111318] px-6 text-[13.5px] font-semibold text-white whitespace-nowrap shrink-0 shadow-[0_6px_18px_-6px_rgba(17,19,24,0.35)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#1f242d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111318] cursor-pointer"
               >
-                Get in Touch
+                Book a Strategy Call
               </button>
 
               <button
@@ -107,12 +114,15 @@ export function Header({ onOpenContact }: HeaderProps) {
           </button>
         </div>
 
-        <nav aria-label="Mobile navigation" className="mt-6 flex flex-col gap-2 max-h-[calc(100vh-140px)] overflow-y-auto">
+        <nav
+          aria-label="Mobile navigation"
+          className="mt-6 flex flex-col gap-2 max-h-[calc(100vh-140px)] overflow-y-auto"
+        >
           {NAV_LINKS.map((link) => (
             <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
+              key={link.sectionId}
+              href={`/#${link.sectionId}`}
+              onClick={(e) => handleNavClick(e, link.sectionId)}
               className="flex min-h-[44px] items-center rounded-xl px-4 text-[15px] font-medium text-[#111318] transition-colors hover:bg-[#EDF4F7]"
             >
               {link.label}
@@ -123,11 +133,11 @@ export function Header({ onOpenContact }: HeaderProps) {
               type="button"
               onClick={() => {
                 setMobileOpen(false);
-                onOpenContact('General Hello');
+                onOpenContact('Strategy Call');
               }}
               className="flex h-[46px] w-full items-center justify-center rounded-full bg-[#111318] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[#1f242d] cursor-pointer"
             >
-              Get in Touch
+              Book a Strategy Call
             </button>
           </div>
         </nav>

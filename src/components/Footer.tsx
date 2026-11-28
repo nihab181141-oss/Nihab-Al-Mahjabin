@@ -1,12 +1,27 @@
 import { ArrowUp, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
-import { useState } from 'react';
-import { BRAND } from '../data/portfolio';
+import { BRAND, ESSAYS, GITHUB_URL } from '../data/portfolio';
 
-const SOCIAL_CHANNELS: { label: string; icon: ReactNode }[] = [
+const SOCIAL_CHANNELS: { label: string; href: string; icon: ReactNode }[] = [
+  {
+    label: 'GitHub',
+    href: GITHUB_URL,
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
+        <rect width="24" height="24" rx="6" fill="#181717" />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M12 4.8a7.2 7.2 0 0 0-2.28 14.03c.36.07.49-.16.49-.35v-1.23c-2 .43-2.42-.96-2.42-.96-.33-.83-.8-1.05-.8-1.05-.65-.45.05-.44.05-.44.72.05 1.1.74 1.1.74.64 1.1 1.68.78 2.09.6.07-.47.25-.78.46-.96-1.6-.18-3.28-.8-3.28-3.55 0-.78.28-1.42.74-1.92-.07-.18-.32-.91.07-1.9 0 0 .6-.19 1.98.74a6.88 6.88 0 0 1 3.6 0c1.38-.93 1.98-.74 1.98-.74.39.99.14 1.72.07 1.9.46.5.74 1.14.74 1.92 0 2.76-1.68 3.37-3.29 3.55.26.22.49.66.49 1.33v1.97c0 .19.13.42.5.35A7.2 7.2 0 0 0 12 4.8Z"
+          fill="#FFFFFF"
+        />
+      </svg>
+    ),
+  },
   {
     label: 'Facebook',
+    href: '#contact',
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
         <rect width="24" height="24" rx="6" fill="#1877F2" />
@@ -19,6 +34,7 @@ const SOCIAL_CHANNELS: { label: string; icon: ReactNode }[] = [
   },
   {
     label: 'Instagram',
+    href: '#contact',
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
         <defs>
@@ -39,6 +55,7 @@ const SOCIAL_CHANNELS: { label: string; icon: ReactNode }[] = [
   },
   {
     label: 'Threads',
+    href: '#contact',
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
         <rect width="24" height="24" rx="6" fill="#101010" />
@@ -52,6 +69,7 @@ const SOCIAL_CHANNELS: { label: string; icon: ReactNode }[] = [
   },
   {
     label: 'X (Twitter)',
+    href: '#contact',
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
         <rect width="24" height="24" rx="6" fill="#000000" />
@@ -64,6 +82,7 @@ const SOCIAL_CHANNELS: { label: string; icon: ReactNode }[] = [
   },
   {
     label: 'Telegram',
+    href: '#contact',
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
         <rect width="24" height="24" rx="6" fill="#26A5E4" />
@@ -75,21 +94,8 @@ const SOCIAL_CHANNELS: { label: string; icon: ReactNode }[] = [
     ),
   },
   {
-    label: 'GitHub',
-    icon: (
-      <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
-        <rect width="24" height="24" rx="6" fill="#181717" />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M12 4.8a7.2 7.2 0 0 0-2.28 14.03c.36.07.49-.16.49-.35v-1.23c-2 .43-2.42-.96-2.42-.96-.33-.83-.8-1.05-.8-1.05-.65-.45.05-.44.05-.44.72.05 1.1.74 1.1.74.64 1.1 1.68.78 2.09.6.07-.47.25-.78.46-.96-1.6-.18-3.28-.8-3.28-3.55 0-.78.28-1.42.74-1.92-.07-.18-.32-.91.07-1.9 0 0 .6-.19 1.98.74a6.88 6.88 0 0 1 3.6 0c1.38-.93 1.98-.74 1.98-.74.39.99.14 1.72.07 1.9.46.5.74 1.14.74 1.92 0 2.76-1.68 3.37-3.29 3.55.26.22.49.66.49 1.33v1.97c0 .19.13.42.5.35A7.2 7.2 0 0 0 12 4.8Z"
-          fill="#FFFFFF"
-        />
-      </svg>
-    ),
-  },
-  {
     label: 'LinkedIn',
+    href: '#contact',
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" aria-hidden="true">
         <rect width="24" height="24" rx="6" fill="#0A66C2" />
@@ -104,64 +110,61 @@ const SOCIAL_CHANNELS: { label: string; icon: ReactNode }[] = [
 
 interface FooterProps {
   onOpenContact: (topic?: string) => void;
+  onNavigateHome: (sectionId?: string) => void;
+  onNavigateEssay: (slug: string) => void;
 }
 
-export function Footer({ onOpenContact }: FooterProps) {
-  const [, setCopied] = useState(false);
-
+export function Footer({ onOpenContact, onNavigateHome, onNavigateEssay }: FooterProps) {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer id="contact" className="border-t-2 border-[#111318]/12 bg-white text-[#111318]">
-      {/* 1. Large Closing Statement */}
-      <div className="mx-auto max-w-[1200px] px-5 pt-24 pb-16 sm:px-7 sm:pt-28 sm:pb-20 lg:px-10">
-        <div className="rounded-[32px] border border-[#111318]/10 bg-[#EDF4F7]/75 p-8 sm:p-12 lg:p-16 shadow-[0_20px_50px_-28px_rgba(12,45,72,0.16)]">
+    <footer id="site-footer" className="border-t-2 border-[#111318]/12 bg-white/76 backdrop-blur-md text-[#111318]">
+      {/* Closing Conversion Banner */}
+      <div className="mx-auto max-w-[1200px] px-5 pt-20 pb-16 sm:px-7 sm:pt-24 sm:pb-20 lg:px-10">
+        <div className="rounded-[32px] border border-[#111318]/10 bg-[#EDF4F7]/75 p-8 sm:p-12 lg:p-14 shadow-[0_20px_50px_-28px_rgba(12,45,72,0.16)]">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
               <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
-              <span>Let&apos;s Connect</span>
+              <span>Collaborate</span>
             </div>
-            <h2 className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.15] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[46px] sm:leading-[1.08] sm:tracking-[-0.03em] lg:text-[54px] [text-wrap:balance]">
-              Let&apos;s build something{' '}
+            <h2 className="mt-4 font-[family-name:var(--font-heading)] text-[28px] min-[380px]:text-[32px] leading-[1.15] font-extrabold tracking-[-0.025em] text-[#111318] sm:text-[44px] sm:leading-[1.08] sm:tracking-[-0.03em] lg:text-[50px] [text-wrap:balance]">
+              Ready to ship a{' '}
               <span className="font-[family-name:var(--font-accent)] italic font-semibold text-[#0c2d48]">
-                remarkable
-              </span>{' '}
-              together.
+                high-utility product
+              </span>
+              ?
             </h2>
-            <p className="mt-4 sm:mt-5 text-[15px] leading-[1.75] text-[#475569] sm:text-[18px] sm:leading-[1.8]">
-              Whether you are looking to launch a new digital venture, architect a high-performance web product, or discuss an ambitious idea from scratch, I&apos;m always open to meaningful collaborations.
+            <p className="mt-4 sm:mt-5 text-[15px] leading-[1.75] text-[#475569] sm:text-[17.5px] sm:leading-[1.8]">
+              Open to venture partnerships, SaaS and EdTech architecture consulting, and enterprise React &amp; TypeScript builds.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <button
                 type="button"
-                onClick={() => onOpenContact('Product Collaboration')}
+                onClick={() => onOpenContact('Strategy Call')}
                 className="inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full bg-[#111318] px-8 text-[15px] font-semibold text-white whitespace-nowrap shrink-0 shadow-[0_12px_28px_-10px_rgba(17,19,24,0.45)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#1f242d] hover:shadow-[0_16px_32px_-10px_rgba(17,19,24,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111318] cursor-pointer"
               >
-                <span>Get in Touch</span>
+                <span>Book a Strategy Call</span>
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* 2, 3, 4, 5. Main Footer Multi-Column Grid */}
+        {/* Multi-Column Footer */}
         <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          {/* Column 1 & 2: Personal Introduction & Ventures (Col span 5) */}
           <div className="lg:col-span-5 space-y-6">
-            <div>
-              <div className="flex items-center gap-3">
-                <img
-                  src="/assets/aistudio/nihab-al-mahjabin-icon-color_ca419e31.svg"
-                  alt="Nihab Al Mahjabin Emblem"
-                  className="h-10 w-10 object-contain"
-                />
-                <span className="font-[family-name:var(--font-heading)] text-[18px] sm:text-[20px] font-extrabold tracking-tight text-[#111318]">
-                  {BRAND.name}
-                </span>
-              </div>
+            <div className="flex items-center gap-3">
+              <img
+                src="/assets/aistudio/nihab-al-mahjabin-icon-color_ca419e31.svg"
+                alt="Nihab Al Mahjabin emblem"
+                className="h-10 w-10 object-contain"
+              />
+              <span className="font-[family-name:var(--font-heading)] text-[18px] sm:text-[20px] font-extrabold tracking-tight text-[#111318]">
+                {BRAND.name}
+              </span>
             </div>
 
             <div>
@@ -169,64 +172,112 @@ export function Footer({ onOpenContact }: FooterProps) {
                 Based in Bangladesh · Working Globally
               </p>
               <p className="mt-3 sm:mt-3.5 text-[14.5px] leading-[1.75] text-[#475569] sm:text-[15px] sm:leading-[1.8] max-w-md">
-                An independent entrepreneur, CEO, and software architect dedicated to turning ambitious imagination into enduring digital ventures (Floraxen Labs, Lumora Studio, Al Jabin Publications, MedProfile Bangladesh, Sable for CV, and FeLoW WebStaR).
+                Founder, CEO, and Software Architect building high-utility SaaS, EdTech, and HealthTech products across Floraxen Labs, MedProfile Bangladesh, SABLE, FeLoW WebStaR, Lumora Studio, and Al Jabin Publications.
               </p>
             </div>
           </div>
 
-          {/* Column 3: Explore (Col span 2) */}
+          {/* Explore & Essays */}
           <div className="lg:col-span-2">
-            <p className="text-[12px] font-semibold tracking-wide text-[#111318] uppercase">
-              Explore
-            </p>
+            <p className="text-[12px] font-semibold tracking-wide text-[#111318] uppercase">Explore</p>
             <ul className="mt-4 space-y-3 text-[14px] text-[#687580]">
               <li>
-                <a href="#top" className="transition-colors hover:text-[#111318]">
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigateHome();
+                  }}
+                  className="transition-colors hover:text-[#111318]"
+                >
                   Home
                 </a>
               </li>
               <li>
-                <a href="#ventures" className="transition-colors hover:text-[#111318]">
+                <a
+                  href="/#projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigateHome('projects');
+                  }}
+                  className="transition-colors hover:text-[#111318]"
+                >
                   Ventures
                 </a>
               </li>
               <li>
-                <a href="#contact" className="transition-colors hover:text-[#111318]">
+                <a
+                  href="/#writing"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigateHome('writing');
+                  }}
+                  className="transition-colors hover:text-[#111318]"
+                >
+                  Essays
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigateHome('contact');
+                  }}
+                  className="transition-colors hover:text-[#111318]"
+                >
                   Contact
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Connect & Socials (Col span 2.5) with Framer Motion Hover */}
+          {/* Social Channels (Colorful Brand App Icons Preserved) */}
           <div className="lg:col-span-2">
             <p className="text-[12px] font-semibold tracking-wide text-[#111318] uppercase">
               Social Channels
             </p>
             <ul className="mt-4 space-y-3 text-[14px] text-[#687580]">
-              {SOCIAL_CHANNELS.map((social) => (
-                <motion.li key={social.label} whileHover={{ scale: 1.06, x: 2 }} transition={{ duration: 0.2 }}>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2.5 text-[#475569] hover:text-[#111318] transition-colors font-medium"
+              {SOCIAL_CHANNELS.map((social) => {
+                const isExternal = social.href.startsWith('http');
+                return (
+                  <motion.li
+                    key={social.label}
+                    whileHover={{ scale: 1.06, x: 2 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    {social.icon}
-                    <span>{social.label}</span>
-                  </a>
-                </motion.li>
-              ))}
+                    <a
+                      href={social.href}
+                      target={isExternal ? '_blank' : undefined}
+                      rel={isExternal ? 'noopener noreferrer' : undefined}
+                      onClick={
+                        !isExternal
+                          ? (e) => {
+                              e.preventDefault();
+                              onOpenContact(`Connect via ${social.label}`);
+                            }
+                          : undefined
+                      }
+                      className="inline-flex items-center gap-2.5 text-[#475569] hover:text-[#111318] transition-colors font-medium"
+                    >
+                      {social.icon}
+                      <span>{social.label}</span>
+                    </a>
+                  </motion.li>
+                );
+              })}
             </ul>
           </div>
 
-          {/* Column 5: More (Col span 3) */}
+          {/* Startups & Crawlable Essay Links (No Icons on Startups) */}
           <div className="lg:col-span-3">
             <p className="text-[12px] font-semibold tracking-wide text-[#111318] uppercase">
-              Startups &amp; Ventures
+              Startups &amp; Essays
             </p>
             <ul className="mt-4 space-y-3 text-[14px] text-[#687580]">
               <li>
                 <span className="font-medium text-[#111318]">Floraxen Labs &amp; Lumora Studio</span>
-                <p className="text-[12px] text-[#687580]/80">Research, software &amp; design studio</p>
+                <p className="text-[12px] text-[#687580]/80">Software studio &amp; product design</p>
               </li>
               <li>
                 <span className="font-medium text-[#111318]">Al Jabin Publications</span>
@@ -234,17 +285,29 @@ export function Footer({ onOpenContact }: FooterProps) {
               </li>
               <li>
                 <span className="font-medium text-[#111318]">MedProfile Bangladesh</span>
-                <p className="text-[12px] text-[#687580]/80">Healthcare professional network</p>
+                <p className="text-[12px] text-[#687580]/80">Doctor digital identity platform</p>
               </li>
               <li>
-                <span className="font-medium text-[#111318]">Sable for CV &amp; FeLoW WebStaR</span>
-                <p className="text-[12px] text-[#687580]/80">Open source creator tools</p>
+                <span className="font-medium text-[#111318]">SABLE &amp; FeLoW WebStaR</span>
+                <p className="text-[12px] text-[#687580]/80">AI CV tooling &amp; tutor discovery</p>
+              </li>
+              <li className="pt-1">
+                <a
+                  href={`/writing/${ESSAYS[0].slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigateEssay(ESSAYS[0].slug);
+                  }}
+                  className="text-[13px] font-medium text-[#2587B8] hover:underline underline-offset-4"
+                >
+                  Latest Essay: {ESSAYS[0].title}
+                </a>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={handleScrollTop}
-                  className="inline-flex items-center gap-1 text-[13px] font-medium text-[#2587B8] transition-colors hover:text-[#111318] cursor-pointer mt-2"
+                  className="inline-flex items-center gap-1 text-[13px] font-medium text-[#2587B8] transition-colors hover:text-[#111318] cursor-pointer mt-1"
                 >
                   <span>Back to Top</span>
                   <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
@@ -254,10 +317,10 @@ export function Footer({ onOpenContact }: FooterProps) {
           </div>
         </div>
 
-        {/* 6. Final Footer Bar */}
+        {/* Legal Footer Bar */}
         <div className="mt-16 flex flex-col justify-between gap-4 border-t border-[#E5EBEF] pt-8 text-[13px] text-[#687580] sm:flex-row sm:items-center">
           <p>© 2026 {BRAND.name}. All rights reserved.</p>
-          <p className="font-medium text-[#111318]">Designed &amp; Built by {BRAND.name} (CEO &amp; Owner).</p>
+          <p className="font-medium text-[#111318]">Designed &amp; Built by {BRAND.name} (Founder &amp; Software Architect).</p>
         </div>
       </div>
     </footer>
