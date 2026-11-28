@@ -1,10 +1,12 @@
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { motion } from 'motion/react';
+import { useEffect, useState } from 'react';
 import { BRAND } from '../data/portfolio';
 
 interface HeaderProps {
   onOpenContact: (topic?: string) => void;
   onNavigateHome: (sectionId?: string) => void;
+  isEssayPage?: boolean;
 }
 
 const NAV_LINKS = [
@@ -15,8 +17,52 @@ const NAV_LINKS = [
   { label: 'Writing', sectionId: 'writing' },
 ];
 
-export function Header({ onOpenContact, onNavigateHome }: HeaderProps) {
+export function Header({ onOpenContact, onNavigateHome, isEssayPage = false }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(
+    isEssayPage ? 'writing' : null
+  );
+
+  useEffect(() => {
+    const updateHeaderState = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+
+      if (isEssayPage) {
+        setActiveSection('writing');
+        return;
+      }
+
+      if (y < 240) {
+        setActiveSection(null);
+        return;
+      }
+
+      const contactEl = document.getElementById('contact');
+      if (contactEl && contactEl.getBoundingClientRect().top <= 160) {
+        setActiveSection(null);
+        return;
+      }
+
+      let current: string | null = null;
+      for (const link of NAV_LINKS) {
+        const el = document.getElementById(link.sectionId);
+        if (el && el.getBoundingClientRect().top <= 160) {
+          current = link.sectionId;
+        }
+      }
+      setActiveSection(current);
+    };
+
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    window.addEventListener('resize', updateHeaderState, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', updateHeaderState);
+      window.removeEventListener('resize', updateHeaderState);
+    };
+  }, [isEssayPage]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId?: string) => {
     e.preventDefault();
@@ -26,8 +72,18 @@ export function Header({ onOpenContact, onNavigateHome }: HeaderProps) {
 
   return (
     <>
-      <header className="relative z-40 w-full px-5 pt-5 sm:px-7 sm:pt-6 lg:px-10">
-        <div className="mx-auto max-w-[1200px] border-b border-[#111318]/10 pb-4">
+      <header
+        className={`sticky top-0 z-40 w-full transition-all duration-200 ${
+          scrolled
+            ? 'border-b border-white/35 bg-white/25 backdrop-blur-md shadow-[0_12px_32px_-16px_rgba(12,45,72,0.28)] px-5 py-2.5 sm:px-7 lg:px-10'
+            : 'px-5 pt-5 sm:px-7 sm:pt-6 lg:px-10'
+        }`}
+      >
+        <div
+          className={`mx-auto max-w-[1200px] transition-all duration-200 ${
+            scrolled ? '' : 'border-b border-[#111318]/10 pb-4'
+          }`}
+        >
           <div className="flex h-13 items-center justify-between gap-6">
             <a
               href="/"
@@ -37,7 +93,7 @@ export function Header({ onOpenContact, onNavigateHome }: HeaderProps) {
               <img
                 src="/assets/aistudio/nihab-al-mahjabin-icon-color_ca419e31.svg"
                 alt="Nihab Al Mahjabin emblem"
-                className="h-11 w-11 sm:h-12 sm:w-12 object-contain"
+                className="h-10 w-10 sm:h-11 sm:w-11 object-contain"
               />
               <img
                 src="/assets/aistudio/nihab-al-mahjabin-single-line_6d36e2ba.svg"
@@ -48,25 +104,39 @@ export function Header({ onOpenContact, onNavigateHome }: HeaderProps) {
 
             <nav
               aria-label="Primary navigation"
-              className="hidden lg:flex items-center gap-8 text-[14px] font-semibold text-[#111318]/85"
+              className="hidden lg:flex items-center gap-8 text-[14px] font-semibold"
             >
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.sectionId}
-                  href={`/#${link.sectionId}`}
-                  onClick={(e) => handleNavClick(e, link.sectionId)}
-                  className="whitespace-nowrap shrink-0 py-1.5 transition-colors duration-150 hover:text-[#2587B8] hover:underline underline-offset-4 decoration-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = activeSection === link.sectionId;
+                return (
+                  <a
+                    key={link.sectionId}
+                    href={`/#${link.sectionId}`}
+                    aria-current={isActive ? 'location' : undefined}
+                    onClick={(e) => handleNavClick(e, link.sectionId)}
+                    className={`relative whitespace-nowrap shrink-0 py-1.5 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318] ${
+                      isActive ? 'text-[#0c2d48] font-bold' : 'text-[#111318]/80 hover:text-[#0c2d48]'
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="active-nav-indicator"
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                        className="absolute inset-x-0 -bottom-0.5 h-[2.5px] rounded-full bg-[#0c2d48]"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </a>
+                );
+              })}
             </nav>
 
             <div className="flex items-center gap-2 shrink-0">
               <button
                 type="button"
                 onClick={() => onOpenContact('Strategy Call')}
-                className="hidden sm:inline-flex h-[44px] items-center justify-center rounded-full bg-[#111318] px-6 text-[13.5px] font-semibold text-white whitespace-nowrap shrink-0 shadow-[0_6px_18px_-6px_rgba(17,19,24,0.35)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#1f242d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111318] cursor-pointer"
+                className="hidden sm:inline-flex h-[42px] items-center justify-center rounded-full bg-[#111318] px-6 text-[13.5px] font-semibold text-white whitespace-nowrap shrink-0 shadow-[0_6px_18px_-6px_rgba(17,19,24,0.35)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#1f242d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111318] cursor-pointer"
               >
                 Book a Strategy Call
               </button>
@@ -118,16 +188,25 @@ export function Header({ onOpenContact, onNavigateHome }: HeaderProps) {
           aria-label="Mobile navigation"
           className="mt-6 flex flex-col gap-2 max-h-[calc(100vh-140px)] overflow-y-auto"
         >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.sectionId}
-              href={`/#${link.sectionId}`}
-              onClick={(e) => handleNavClick(e, link.sectionId)}
-              className="flex min-h-[44px] items-center rounded-xl px-4 text-[15px] font-medium text-[#111318] transition-colors hover:bg-[#EDF4F7]"
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = activeSection === link.sectionId;
+            return (
+              <a
+                key={link.sectionId}
+                href={`/#${link.sectionId}`}
+                aria-current={isActive ? 'location' : undefined}
+                onClick={(e) => handleNavClick(e, link.sectionId)}
+                className={`flex min-h-[44px] items-center justify-between rounded-xl px-4 text-[15px] transition-colors ${
+                  isActive
+                    ? 'bg-[#EDF4F7] font-bold text-[#0c2d48]'
+                    : 'font-medium text-[#111318] hover:bg-[#EDF4F7]'
+                }`}
+              >
+                <span>{link.label}</span>
+                {isActive && <span className="h-2 w-2 rounded-full bg-[#39A9D5]" aria-hidden="true" />}
+              </a>
+            );
+          })}
           <div className="mt-6 border-t border-[#E5EBEF] pt-6">
             <button
               type="button"

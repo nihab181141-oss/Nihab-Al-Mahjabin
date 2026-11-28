@@ -14,6 +14,7 @@ import { Footer } from './components/Footer';
 import { FounderBento } from './components/FounderBento';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { SectionBarrier } from './components/SectionBarrier';
 import { SeoHead } from './components/SeoHead';
 import { ThingsBuilt } from './components/ThingsBuilt';
@@ -79,47 +80,29 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className="relative min-h-dvh w-full overflow-x-hidden bg-gradient-to-b from-[#24a4d8] via-[#24a4d8] to-[#1e93c4]">
-        {/* Full-document scrolling sky-blue gradient and dense multi-layer cloud backdrop */}
+      <div className="relative min-h-dvh w-full overflow-x-clip bg-[#39A9D5]">
+        <ScrollProgressBar />
+
+        {/* Full-website present sky-blue (#39A9D5) and crisp drifting cloud background */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#39A9D5]"
         >
-          {/* Primary dense cloud stack */}
-          <div className="flex w-[122%] flex-col animate-cloud-drift will-change-transform">
-            {[false, true, false, true, false, true, false, true, false, true].map((flipped, idx) => (
-              <div
-                key={`cloud-base-${idx}`}
-                className={`w-full shrink-0 aspect-[724/1680] bg-[url('/assets/aistudio/file_000000003de48208908714c0dd1fed66_6ed4d764.png')] bg-cover bg-top bg-no-repeat ${
-                  flipped ? '-scale-y-100' : ''
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Secondary overlapping parallax cloud depth layer */}
-          <div className="absolute inset-x-0 top-0 -mt-20 flex w-[122%] flex-col opacity-30 animate-cloud-drift-reverse will-change-transform">
-            {[true, false, true, false, true, false, true, false, true, false].map((flipped, idx) => (
-              <div
-                key={`cloud-depth-${idx}`}
-                className={`w-full shrink-0 aspect-[724/1680] -scale-x-100 bg-[url('/assets/aistudio/file_000000003de48208908714c0dd1fed66_6ed4d764.png')] bg-cover bg-center bg-no-repeat ${
-                  flipped ? '-scale-y-100' : ''
-                }`}
-              />
-            ))}
-          </div>
-
-          <div className="absolute inset-0 bg-gradient-to-b from-[#24a4d8]/22 via-[#24a4d8]/28 to-[#24a4d8]/34" />
+          <div className="min-h-full w-[114%] aspect-[724/2172] bg-[url('/assets/aistudio/file_000000003de48208908714c0dd1fed66_6ed4d764.png')] bg-cover bg-top bg-no-repeat animate-cloud-drift will-change-transform" />
         </div>
 
         {/* Subtle pulsing top-right sun-lit glare */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute top-0 right-0 z-10 h-[70vmin] w-[70vmin] min-h-[300px] min-w-[300px] max-h-[720px] max-w-[720px] origin-top-right bg-sun-glare mix-blend-screen animate-sun-glare will-change-transform"
+          className="pointer-events-none fixed top-0 right-0 z-10 h-[70vmin] w-[70vmin] min-h-[300px] min-w-[300px] max-h-[720px] max-w-[720px] origin-top-right bg-sun-glare mix-blend-screen animate-sun-glare will-change-transform"
         />
 
         <div className="relative z-20 flex min-h-dvh flex-col">
-          <Header onOpenContact={handleOpenContact} onNavigateHome={handleNavigateHome} />
+          <Header
+            onOpenContact={handleOpenContact}
+            onNavigateHome={handleNavigateHome}
+            isEssayPage={Boolean(activeEssay)}
+          />
 
           {activeEssay ? (
             <EssayPage
@@ -141,34 +124,22 @@ export default function App() {
                 <Hero onOpenContact={handleOpenContact} />
 
                 <SectionBarrier index="01" label="Founder Story & Capabilities" tone="white" />
-                <div className="bg-[#E5F5FC]/54 backdrop-blur-[6px]">
-                  <FounderBento />
-                </div>
+                <FounderBento />
 
                 <SectionBarrier index="02" label="Featured Ventures" tone="sky" />
-                <div className="bg-[#DCF2FB]/66 backdrop-blur-[8px]">
-                  <FeaturedProjects onOpenContact={handleOpenContact} />
-                </div>
+                <FeaturedProjects onOpenContact={handleOpenContact} />
 
                 <SectionBarrier index="03" label="Open Source & Tooling" tone="white" />
-                <div className="bg-[#E5F5FC]/54 backdrop-blur-[6px]">
-                  <ThingsBuilt />
-                </div>
+                <ThingsBuilt />
 
                 <SectionBarrier index="04" label="Leadership Timeline" tone="mist" />
-                <div className="bg-[#D5EFFA]/62 backdrop-blur-[8px]">
-                  <WorkExperience />
-                </div>
+                <WorkExperience />
 
                 <SectionBarrier index="05" label="Articles & Essays" tone="white" />
-                <div className="bg-[#E5F5FC]/54 backdrop-blur-[6px]">
-                  <BlogArticles onNavigateEssay={handleNavigateEssay} />
-                </div>
+                <BlogArticles onNavigateEssay={handleNavigateEssay} />
 
                 <SectionBarrier index="06" label="Book a Strategy Call" tone="sky" />
-                <div className="bg-[#DCF2FB]/62 backdrop-blur-[8px]">
-                  <ContactSection />
-                </div>
+                <ContactSection />
               </main>
             </>
           )}

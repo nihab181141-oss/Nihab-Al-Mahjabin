@@ -1,6 +1,7 @@
-import { Check, Copy, Mail, X } from 'lucide-react';
+import { AlertCircle, Check, Copy, Loader2, Mail, Send, X } from 'lucide-react';
 import { FormEvent, useEffect, useState } from 'react';
 import { BRAND } from '../data/portfolio';
+import { buildMailtoHref, sendContactEmail } from '../lib/contactEmail';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -20,13 +21,16 @@ export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProp
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [sentSenderName, setSentSenderName] = useState('');
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       setTopic(initialTopic || TOPICS[0]);
-      setSubmitted(false);
+      setStatus('idle');
+      setErrorMsg('');
     }
   }, [isOpen, initialTopic]);
 
@@ -41,10 +45,26 @@ export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProp
 
   if (!isOpen) return null;
 
-  const handleSubmit = (event: FormEvent) => {
+  const mailtoHref = buildMailtoHref({ name, email, topic, message });
+
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    if (!name.trim() || !email.trim() || !message.trim()) return;
-    setSubmitted(true);
+    if (!name.trim() || !email.trim() || !message.trim() || status === 'sending') return;
+
+    setStatus('sending');
+    setErrorMsg('');
+
+    const result = await sendContactEmail({ name, email, topic, message });
+    if (result.ok) {
+      setSentSenderName(name.trim());
+      setStatus('sent');
+      setName('');
+      setEmail('');
+      setMessage('');
+    } else {
+      setStatus('error');
+      setErrorMsg(result.errorMessage || `Could not deliver automatically right now.`);
+    }
   };
 
   const handleCopyEmail = async () => {
@@ -56,10 +76,6 @@ export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProp
       // Clipboard API unavailable in restricted contexts
     }
   };
-
-  const mailtoHref = `mailto:${BRAND.email}?subject=${encodeURIComponent(
-    `${topic} — from ${name || 'Portfolio Visitor'}`
-  )}&body=${encodeURIComponent(message)}`;
 
   return (
     <div
@@ -94,24 +110,24 @@ export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProp
           </button>
         </div>
 
-        {submitted ? (
+        {status === 'sent' ? (
           <div className="mt-6 rounded-[18px] border border-[#35B99A]/35 bg-[#35B99A]/10 p-5">
             <div className="flex items-center gap-2 text-[14px] font-semibold text-[#111318]">
               <Check className="h-4 w-4 text-[#35B99A]" aria-hidden="true" />
-              <span>Note prepared for {BRAND.name}</span>
+              <span>Email delivered to {BRAND.email}</span>
             </div>
-            <p className="mt-2 text-[14px] leading-relaxed text-[#687580]">
-              Thank you, {name}. Send this directly using your email client or copy{' '}
-              <span className="font-medium text-[#111318]">{BRAND.email}</span>.
+            <p className="mt-2 text-[14px] leading-relaxed text-[#475569]">
+              Thank you, {sentSenderName}. Your message has been emailed directly to{' '}
+              <span className="font-semibold text-[#111318]">{BRAND.email}</span>.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <a
-                href={mailtoHref}
-                className="inline-flex h-[42px] items-center gap-2 rounded-full bg-[#111318] px-5 text-[13px] font-medium text-white transition-colors hover:bg-[#1f242d]"
+              <button
+                type="button"
+                onClick={() => setStatus('idle')}
+                className="inline-flex h-[42px] items-center gap-2 rounded-full bg-[#111318] px-5 text-[13px] font-medium text-white transition-colors hover:bg-[#1f242d] cursor-pointer"
               >
-                <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-                <span>Open Email App</span>
-              </a>
+                <span>Send Another Message</span>
+              </button>
               <button
                 type="button"
                 onClick={handleCopyEmail}
@@ -194,6 +210,27 @@ export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProp
               />
             </div>
 
+            {status === 'error' && (
+              <div
+                role="alert"
+                className="rounded-[14px] border border-amber-300 bg-amber-50 p-3.5 text-[13px] text-[#111318]"
+              >
+                <div className="flex items-start gap-2">
+                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" aria-hidden="true" />
+                  <div>
+                    <p className="font-medium leading-relaxed">{errorMsg}</p>
+                    <a
+                      href={mailtoHref}
+                      className="mt-2 inline-flex items-center gap-1.5 font-semibold text-[#2587B8] hover:underline underline-offset-4"
+                    >
+                      <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span>Send via Email App to {BRAND.email}</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#E5EBEF] pt-4">
               <button
                 type="button"
@@ -210,9 +247,20 @@ export function ContactModal({ isOpen, initialTopic, onClose }: ContactModalProp
 
               <button
                 type="submit"
-                className="inline-flex h-[42px] items-center justify-center rounded-full bg-[#111318] px-6 text-[13px] font-medium text-white transition-all duration-150 hover:bg-[#1f242d] cursor-pointer"
+                disabled={status === 'sending'}
+                className="inline-flex h-[42px] items-center justify-center gap-2 rounded-full bg-[#111318] px-6 text-[13px] font-medium text-white transition-all duration-150 hover:bg-[#1f242d] disabled:opacity-65 cursor-pointer"
               >
-                Continue to Send
+                {status === 'sending' ? (
+                  <>
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span>Send Message</span>
+                  </>
+                )}
               </button>
             </div>
           </form>

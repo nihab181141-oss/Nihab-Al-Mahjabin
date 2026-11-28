@@ -11,8 +11,8 @@ import {
 import { FadeIn } from './EditorialMotion';
 
 function OfficialBrandIcon({ tool, size = 'sm' }: { tool: MarqueeTool; size?: 'sm' | 'md' }) {
-  const boxClass = size === 'md' ? 'h-10 w-10 rounded-xl' : 'h-7 w-7 rounded-lg';
-  const svgClass = size === 'md' ? 'h-5 w-5' : 'h-4 w-4';
+  const boxClass = size === 'md' ? 'h-10 w-10 rounded-xl' : 'h-8 w-8 sm:h-7 sm:w-7 rounded-lg';
+  const svgClass = size === 'md' ? 'h-5 w-5' : 'h-[18px] w-[18px] sm:h-4 sm:w-4';
   const backdropClass = tool.darkBackdrop
     ? 'bg-[#111318] border border-[#111318]'
     : 'bg-white border border-[#111318]/8';
@@ -44,13 +44,13 @@ function TechMarqueeLane({
   onSelect: (tool: MarqueeTool) => void;
 }) {
   return (
-    <div className="marquee-edge-fade overflow-hidden py-0.5">
-      <div className={`flex w-max gap-2.5 ${animationClass} hover:[animation-play-state:paused]`}>
+    <div className="marquee-edge-fade overflow-hidden py-1">
+      <div className={`flex w-max gap-3.5 sm:gap-2.5 ${animationClass} hover:[animation-play-state:paused]`}>
         {[0, 1].map((pass) => (
           <div
             key={pass}
             aria-hidden={pass === 1}
-            className="flex shrink-0 items-center gap-2.5"
+            className="flex shrink-0 items-center gap-3.5 sm:gap-2.5"
           >
             {items.map((tool) => {
               const isSelected = activeId === tool.id;
@@ -63,14 +63,14 @@ function TechMarqueeLane({
                   onMouseEnter={() => onSelect(tool)}
                   aria-label={`${tool.name} (${tool.category})`}
                   aria-pressed={pass === 0 ? isSelected : undefined}
-                  className={`inline-flex items-center gap-2.5 rounded-2xl border px-3 py-2 transition-all duration-150 cursor-pointer shrink-0 ${
+                  className={`inline-flex items-center gap-3 sm:gap-2.5 rounded-2xl border px-3.5 py-2.5 sm:px-3 sm:py-2 transition-all duration-150 cursor-pointer shrink-0 ${
                     isSelected
-                      ? 'border-[#2587B8] bg-[#EDF4F7] shadow-[0_6px_16px_-8px_rgba(37,135,184,0.4)]'
-                      : 'border-[#111318]/10 bg-[#F8FAFC] hover:border-[#2587B8]/40 hover:bg-white'
+                      ? 'border-[#0c2d48]/50 bg-white/65 shadow-[0_6px_16px_-8px_rgba(12,45,72,0.35)]'
+                      : 'border-white/30 bg-white/35 hover:border-white/60 hover:bg-white/55'
                   }`}
                 >
                   <OfficialBrandIcon tool={tool} />
-                  <span className="font-[family-name:var(--font-heading)] text-[13px] font-bold tracking-tight text-[#111318] whitespace-nowrap">
+                  <span className="font-[family-name:var(--font-heading)] text-[13.5px] sm:text-[13px] font-bold tracking-tight text-[#111318] whitespace-nowrap">
                     {tool.name}
                   </span>
                 </button>
@@ -119,8 +119,8 @@ export function FounderBento() {
       className="mx-auto max-w-[1200px] px-5 py-20 sm:px-7 sm:py-24 lg:px-10 lg:py-28"
     >
       <FadeIn className="max-w-3xl">
-        <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#2587B8]">
-          <span className="h-[2px] w-6 rounded-full bg-[#39A9D5]" aria-hidden="true" />
+        <div className="inline-flex items-center gap-2.5 text-[11.5px] tracking-[0.16em] sm:text-[12.5px] sm:tracking-[0.2em] font-bold uppercase text-[#0c2d48]">
+          <span className="h-[2px] w-6 rounded-full bg-[#0c2d48]" aria-hidden="true" />
           <span>{FOUNDER_BENTO.eyebrow}</span>
         </div>
         <h2
@@ -133,7 +133,7 @@ export function FounderBento() {
           </span>
           .
         </h2>
-        <p className="mt-3 text-[15.5px] leading-[1.7] text-[#475569] sm:text-[17px]">
+        <p className="mt-3 text-[15.5px] leading-[1.7] font-medium text-[#111318]/80 sm:text-[17px]">
           {FOUNDER_BENTO.title}
         </p>
       </FadeIn>
@@ -141,22 +141,22 @@ export function FounderBento() {
       {/* Bento Grid */}
       <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-12">
         {/* Card 1: Founder Story (col-span-7) */}
-        <FadeIn className="lg:col-span-7 rounded-[28px] border border-[#111318]/10 bg-white p-7 sm:p-9 shadow-[0_14px_36px_-22px_rgba(12,45,72,0.14)] flex flex-col justify-between">
+        <FadeIn className="lg:col-span-7 glass-card-sheen rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-md p-7 sm:p-9 shadow-[0_14px_36px_-22px_rgba(12,45,72,0.25)] flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider text-[#2587B8]">
+            <div className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider text-[#0c2d48]">
               <span>Why I Build</span>
             </div>
             <h3 className="mt-3 font-[family-name:var(--font-heading)] text-[22px] sm:text-[26px] leading-[1.22] font-extrabold tracking-tight text-[#111318]">
               Solving structural market gaps from Bangladesh to global markets.
             </h3>
-            <div className="mt-4 space-y-3.5 text-[15px] sm:text-[15.5px] leading-[1.78] text-[#475569]">
+            <div className="mt-4 space-y-3.5 text-[15px] sm:text-[15.5px] leading-[1.78] font-medium text-[#111318]/85">
               {FOUNDER_BENTO.storyParagraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 24)}>{paragraph}</p>
               ))}
             </div>
           </div>
 
-          <div className="mt-6 pt-5 border-t border-[#E5EBEF] flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] font-semibold text-[#111318]">
+          <div className="mt-6 pt-5 border-t border-white/25 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] font-semibold text-[#111318]">
             <span>Direct Founder-Led Architecture</span>
           </div>
         </FadeIn>
@@ -164,25 +164,25 @@ export function FounderBento() {
         {/* Card 2: Live Location Clock & Key Metrics (col-span-5) */}
         <FadeIn
           delay={0.08}
-          className="lg:col-span-5 rounded-[28px] border border-[#111318]/10 bg-[#EDF4F7]/75 p-7 sm:p-9 shadow-[0_14px_36px_-22px_rgba(12,45,72,0.14)] flex flex-col justify-between gap-6"
+          className="lg:col-span-5 glass-card-sheen rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-md p-7 sm:p-9 shadow-[0_14px_36px_-22px_rgba(12,45,72,0.25)] flex flex-col justify-between gap-6"
         >
-          <div className="rounded-[20px] border border-[#111318]/10 bg-white p-5">
+          <div className="rounded-[20px] border border-white/30 bg-white/25 backdrop-blur-sm p-5">
             <div className="flex items-center justify-between gap-3">
               <span className="inline-flex items-center gap-2 text-[13px] font-bold text-[#111318]">
-                <MapPin className="h-4 w-4 text-[#2587B8]" aria-hidden="true" />
+                <MapPin className="h-4 w-4 text-[#0c2d48]" aria-hidden="true" />
                 <span>Dhaka, Bangladesh</span>
               </span>
-              <span className="font-mono text-[11.5px] font-semibold text-[#2587B8]">
+              <span className="font-mono text-[11.5px] font-bold text-[#0c2d48]">
                 Asia/Dhaka · BST
               </span>
             </div>
 
             <div className="mt-4 flex items-baseline justify-between gap-3">
               <div className="inline-flex items-center gap-2 font-mono text-[22px] sm:text-[26px] font-bold tracking-tight text-[#111318] tabular-nums">
-                <Clock className="h-5 w-5 text-[#2587B8]" aria-hidden="true" />
+                <Clock className="h-5 w-5 text-[#0c2d48]" aria-hidden="true" />
                 <span>{dhakaTime}</span>
               </div>
-              <span className="text-[12.5px] font-semibold text-[#475569]">Remote Worldwide</span>
+              <span className="text-[12.5px] font-semibold text-[#0c2d48]/85">Remote Worldwide</span>
             </div>
           </div>
 
@@ -190,9 +190,9 @@ export function FounderBento() {
             {FOUNDER_BENTO.metrics.map((metric) => (
               <div
                 key={metric.label}
-                className="flex items-center justify-between rounded-[18px] border border-[#111318]/10 bg-white px-5 py-3.5"
+                className="flex items-center justify-between rounded-[18px] border border-white/30 bg-white/25 backdrop-blur-sm px-5 py-3.5"
               >
-                <span className="text-[13px] font-semibold text-[#475569]">{metric.label}</span>
+                <span className="text-[13px] font-semibold text-[#0c2d48]/90">{metric.label}</span>
                 <span className="font-[family-name:var(--font-heading)] text-[16px] sm:text-[17px] font-extrabold text-[#111318]">
                   {metric.value}
                 </span>
@@ -204,19 +204,19 @@ export function FounderBento() {
         {/* Card 3: 72-Tool Infinite Engineering Marquee (col-span-6) */}
         <FadeIn
           delay={0.12}
-          className="lg:col-span-6 rounded-[28px] border border-[#111318]/10 bg-white p-7 sm:p-9 shadow-[0_14px_36px_-22px_rgba(12,45,72,0.14)] flex flex-col justify-between overflow-hidden"
+          className="lg:col-span-6 glass-card-sheen rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-md p-7 sm:p-9 shadow-[0_14px_36px_-22px_rgba(12,45,72,0.25)] flex flex-col justify-between overflow-hidden"
         >
           <div>
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-[12px] font-bold uppercase tracking-wider text-[#2587B8]">
+                <p className="text-[12px] font-bold uppercase tracking-wider text-[#0c2d48]">
                   Production Tech Stack
                 </p>
                 <h3 className="mt-1.5 font-[family-name:var(--font-heading)] text-[21px] sm:text-[24px] font-extrabold tracking-tight text-[#111318]">
                   Tools &amp; Ecosystem Marquee
                 </h3>
               </div>
-              <span className="font-mono text-[12px] font-bold text-[#64748B] tabular-nums shrink-0">
+              <span className="font-mono text-[12px] font-bold text-[#0c2d48] tabular-nums shrink-0">
                 {ALL_MARQUEE_TOOLS.length} Official Tools
               </span>
             </div>
@@ -243,18 +243,18 @@ export function FounderBento() {
             </div>
           </div>
 
-          <div className="mt-6 rounded-2xl border border-[#111318]/10 bg-[#EDF4F7]/65 px-4 py-3.5 sm:px-5 sm:py-4 flex items-start gap-3.5">
+          <div className="mt-6 rounded-2xl border border-white/30 bg-white/25 backdrop-blur-sm px-4 py-3.5 sm:px-5 sm:py-4 flex items-start gap-3.5">
             <OfficialBrandIcon tool={activeTech} size="md" />
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-2">
                 <span className="font-[family-name:var(--font-heading)] text-[15.5px] font-extrabold text-[#111318] truncate">
                   {activeTech.name}
                 </span>
-                <span className="font-mono text-[11.5px] font-semibold text-[#2587B8] shrink-0">
+                <span className="font-mono text-[11.5px] font-bold text-[#0c2d48] shrink-0">
                   {activeTech.category}
                 </span>
               </div>
-              <p className="mt-1 text-[13.5px] sm:text-[14px] leading-[1.6] text-[#475569]">
+              <p className="mt-1 text-[13.5px] sm:text-[14px] leading-[1.6] font-medium text-[#111318]/85">
                 {activeTech.role}
               </p>
             </div>
@@ -264,10 +264,10 @@ export function FounderBento() {
         {/* Card 4: Interactive Core Pillars (col-span-6) */}
         <FadeIn
           delay={0.16}
-          className="lg:col-span-6 rounded-[28px] border border-[#111318]/10 bg-white p-7 sm:p-9 shadow-[0_14px_36px_-22px_rgba(12,45,72,0.14)] flex flex-col justify-between"
+          className="lg:col-span-6 glass-card-sheen rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-md p-7 sm:p-9 shadow-[0_14px_36px_-22px_rgba(12,45,72,0.25)] flex flex-col justify-between"
         >
           <div>
-            <div className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider text-[#2587B8]">
+            <div className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider text-[#0c2d48]">
               <Layers className="h-4 w-4" aria-hidden="true" />
               <span>Core Capabilities</span>
             </div>
@@ -286,7 +286,7 @@ export function FounderBento() {
                     className={`rounded-full px-4 py-2 text-[13px] font-semibold transition-all cursor-pointer ${
                       active
                         ? 'bg-[#111318] text-white shadow-xs'
-                        : 'bg-[#EDF4F7] text-[#475569] hover:text-[#111318]'
+                        : 'border border-white/30 bg-white/25 text-[#111318] hover:bg-white/45'
                     }`}
                   >
                     <span className="font-mono text-[11px] opacity-75 mr-1.5">{pillar.index}</span>
@@ -300,16 +300,16 @@ export function FounderBento() {
               <h3 className="font-[family-name:var(--font-heading)] text-[21px] sm:text-[23px] leading-[1.25] font-extrabold tracking-tight text-[#111318]">
                 {selectedPillar.title}
               </h3>
-              <p className="mt-2.5 text-[14.5px] sm:text-[15px] leading-[1.7] text-[#475569]">
+              <p className="mt-2.5 text-[14.5px] sm:text-[15px] leading-[1.7] font-medium text-[#111318]/85">
                 {selectedPillar.summary}
               </p>
             </div>
           </div>
 
-          <ul className="mt-6 space-y-2.5 border-t border-[#E5EBEF] pt-5">
+          <ul className="mt-6 space-y-2.5 border-t border-white/25 pt-5">
             {selectedPillar.outcomes.map((outcome) => (
-              <li key={outcome} className="flex items-start gap-2.5 text-[14px] font-medium text-[#111318]">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#2587B8]" aria-hidden="true" />
+              <li key={outcome} className="flex items-start gap-2.5 text-[14px] font-semibold text-[#111318]">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#0c2d48]" aria-hidden="true" />
                 <span>{outcome}</span>
               </li>
             ))}
